@@ -33,7 +33,7 @@ public class Usuario {
 	    this.puntos = puntos;
 	    this.img = img;
 	    
-	  	new InterfazUsuario(nombre, apellido1, apellido2, puntos, img);    	        
+	  	new InterfazUsuario(nombre, apellido1, apellido2, puntos, img);
 	}
  
     /*
