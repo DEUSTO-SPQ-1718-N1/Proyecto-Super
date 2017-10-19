@@ -178,6 +178,6 @@ public class InterfazUsuario extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-
+		
 	}   
 }
