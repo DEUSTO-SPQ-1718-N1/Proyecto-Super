@@ -1,15 +1,22 @@
 package com.deusto.SPQ1718.DSPQ1718P1_19;
+import java.awt.Color;
+import java.awt.Image;
 
-import java.awt.BorderLayout;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import java.awt.Color;
+import java.awt.Toolkit;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+
+
 
 public class InterfazUsuario extends JFrame{
+	
 	public static void main( String[] args )
     {
         InterfazUsuario interfaz= new InterfazUsuario();
@@ -17,11 +24,14 @@ public class InterfazUsuario extends JFrame{
     }
 	private JPanel panel;
 	private JTable table;
+	double media=0.0;
 	public InterfazUsuario() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ALUMNO\\Desktop\\nabavka.jpg"));
 		this.setTitle("Interfaz usuario");
 		this.setSize(700, 500);
 		this.setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
+		
 		
 		panel = new JPanel();
 		panel.setForeground(Color.BLACK);
@@ -40,8 +50,23 @@ public class InterfazUsuario extends JFrame{
 		table= new JTable(data, nombreColumnas);
 		table.setForeground(Color.BLACK);
 		JScrollPane scrollpane = new JScrollPane(table);
-		
 		panel.add(scrollpane);
+		
+		double sumatoria1=0.0;
+        int totalRow= table.getRowCount();
+        totalRow-=1;
+        for(int i=0;i<=(totalRow);i++)
+        {
+             double sumatoria= Double.parseDouble(String.valueOf(table.getValueAt(i,1)));
+             sumatoria1+=sumatoria;
+             System.out.println(""+sumatoria1);
+               
+		}
+        DecimalFormat df = new DecimalFormat("#.00");
+        media= sumatoria1/ table.getRowCount();
+        System.out.println(df.format(media));
+        
+		
 		
 		
 	}
