@@ -16,13 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
-
-import com.deusto.SPQ1718.P1_39.Usuario;
 import com.deusto.SPQ1718.Proyecto_Super.App;
-
 /*
  * Clase que crea una ventana en la que se muestra al usuario cuántos puntos tiene
  */
@@ -91,8 +87,10 @@ public class InterfazUsuario extends JFrame implements ActionListener {
         panelInferior = new JPanel();
         botonV=new JButton("        V O L V E R        ");        
         botonV.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.exit(ABORT);			
+			public void actionPerformed(ActionEvent arg0) {					
+				App frame = new App();
+				frame.setVisible(true);
+				setVisible(false);
 			}
 		});
         

@@ -2,23 +2,25 @@ package com.deusto.SPQ1718.DSPQ1718P1_33;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+
+import com.deusto.SPQ1718.Proyecto_Super.App;
 
 public class EnviarRecomendacion {
 	//se envian recomendaciones de productos a los clientes
 	private String aviso;
 	private String recomendacion;
 	private String arrayProductos[];
-	public EnviarRecomendacion(){
-		 
-	}
-	 
-	public void lanzarVentana(String aviso, String recomendacion){
+	
+	public void lanzarVentanaRecomendaciones(String aviso, String recomendacion){
 		 String titulo = "Recomendaciones";
-		 JFrame ventanaM = new JFrame(titulo);
+		 final JFrame ventanaM = new JFrame(titulo);
 		 JTextArea jtextarea1 = new JTextArea();
 		 JTextArea jtextarea2 = new JTextArea();
 		 
@@ -31,7 +33,7 @@ public class EnviarRecomendacion {
 	     ventanaM.setResizable(false);
 
 	     
-	     ventanaM.setLayout(new GridLayout(2,1));
+	     ventanaM.setLayout(new GridLayout(3,1));
 	     ventanaM.add(jtextarea1);
 	     ventanaM.add(jtextarea2);
 	     
@@ -40,6 +42,17 @@ public class EnviarRecomendacion {
 	     
 	     jtextarea1.setFont(new Font("Serif", Font.BOLD, 20));
 	     jtextarea2.setFont(new Font("Serif", Font.BOLD, 15));
+	     
+		JButton buttonV = new JButton("V O L V E R");
+		buttonV.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				App frame = new App();
+				frame.setVisible(true);
+				ventanaM.setVisible(false);
+			}
+		});
+		buttonV.setBounds(480, 367, 165, 50);
+		ventanaM.add(buttonV);
 	     
 	}
 	

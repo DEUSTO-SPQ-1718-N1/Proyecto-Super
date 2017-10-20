@@ -1,30 +1,27 @@
 package com.deusto.SPQ1718.DSPQ1718P1_19;
 import java.awt.Color;
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import com.deusto.SPQ1718.Proyecto_Super.App;
 import java.awt.Font;
-
-
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InterfazUsuario extends JFrame{
 	//Pequeño main para visualizar esta sola clase antes de hacer el merge
-	/*public static void main( String[] args )
+/*	public static void main( String[] args )
     {
         InterfazUsuario interfaz= new InterfazUsuario();
         interfaz.setVisible(true);
-    }*/
+    }
+*/    
 	private JPanel panel;
 	//Tabla que muestre la fecha de la compra y la puntacion
 	private JTable table;
@@ -36,7 +33,7 @@ public class InterfazUsuario extends JFrame{
 		//Icono de la cabecera de la pantalla
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ALUMNO\\Desktop\\nabavka.jpg"));
 		this.setTitle("Interfaz usuario");
-		this.setSize(700, 500);
+		this.setSize(800, 500);
 		this.setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
@@ -63,6 +60,17 @@ public class InterfazUsuario extends JFrame{
 		scrollpane.setBounds(100, 5, 350, 427);
 		//Añadimos la tabla al scroll pra que se visualize
 		panel.add(scrollpane);
+		
+		JButton buttonV = new JButton("V O L V E R");
+		buttonV.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				App frame = new App();
+				frame.setVisible(true);
+				setVisible(false);
+			}
+		});
+		buttonV.setBounds(480, 367, 165, 50);
+		panel.add(buttonV);
 		
 		textField = new JTextField();
 		textField.setBounds(522, 224, 86, 20);
@@ -92,9 +100,5 @@ public class InterfazUsuario extends JFrame{
         lblPuntuacionMedia.setForeground(Color.WHITE);
         lblPuntuacionMedia.setBounds(496, 180, 141, 20);
         panel.add(lblPuntuacionMedia);
-        
-		
-		
-		
 	}
 }
