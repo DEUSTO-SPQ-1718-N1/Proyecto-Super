@@ -35,6 +35,9 @@ public class InterfazUsuario extends JFrame implements ActionListener {
 	private JButton botonV;
     private String nombreUser, ape1User, ape2User, imagen;
     private int puntosAcum;
+    private String np1, np2, np3, np4, np5; 
+    private int pp1, pp2, pp3, pp4, pp5;
+    private String fp1, fp2, fp3, fp4, fp5;
     
     /*
      * La ventana está diseñada con el BorderLayout.
@@ -109,12 +112,21 @@ public class InterfazUsuario extends JFrame implements ActionListener {
         
         String[] columnNames1 = {"Producto", "Entrada puntos", "Fecha"};
         Object[][] data1 = {
-			{"Nesquick", "5", "12/09/2017"},
-			{"Pan baguette", "1", "12/09/2017"},
-			{"Tarta de manzana", "7", "12/09/2017"},
-			{"Balon de futbol", "3", "04/09/2017"},
-			{"Lavadora Siemens", "35", "04/09/2017"}
+			{np1, "  + " + pp1, fp1},
+			{np2, "  + " + pp2, fp2},
+			{np3, "  + " + pp3, fp3},
+			{np4, "  + " + pp4, fp4},
+			{np5, "  + " + pp5, fp5}
 		};
+       /* 
+        Object[][] data1 = {
+    			{"Nesquick", "5", "12/09/2017"},
+    			{"Pan baguette", "1", "12/09/2017"},
+    			{"Tarta de manzana", "7", "12/09/2017"},
+    			{"Balon de futbol", "3", "04/09/2017"},
+    			{"Lavadora Siemens", "35", "04/09/2017"}
+    	};        
+        */
         JTable tabla1 = new JTable(data1, columnNames1);
 	    tabla1.setRowHeight(30);
         tabla1.setForeground(new Color (0,102,0));        
@@ -122,11 +134,11 @@ public class InterfazUsuario extends JFrame implements ActionListener {
 
         String[] columnNames2 = {"Producto", "Salida puntos", "Fecha"};
 		Object[][] data2 = {
-				{"TV Samsung 40", "-1600", "12/09/2017"},
-				{"Arroz integral", "-50", "27/06/2017"},
-				{"Coca Cola Zero 2L", "-120", "27/06/2017"},
-				{"Zuma Naranja 1L", "-100", "27/06/2017"},
-				{"Leche Pascual", "-180", "27/06/2017"}
+				{"  TV Samsung 40", "  - 1600", "  12/09/2017"},
+				{"  Arroz integral", "  - 50", "  27/06/2017"},
+				{"  Coca Cola", "  - 120", "  27/06/2017"},
+				{"  Zumo Naranja", "  - 100", "  27/06/2017"},
+				{"  Leche Pascual", "  - 180", "  27/06/2017"}
 			};
         JTable tabla2 = new JTable(data2, columnNames2);
         tabla2.setForeground(Color.red);        
@@ -163,13 +175,28 @@ public class InterfazUsuario extends JFrame implements ActionListener {
      * El constructor inicializa los metodos de construcion de la ventana y recibe los 
      * parametros necesarios
      */
-	public InterfazUsuario(String nombre, String apellido1, String apellido2, int puntos, String img) {
-        nombreUser = nombre;
-        ape1User = apellido1;
-        ape2User = apellido2;
-        puntosAcum = puntos;
-        imagen = img;
-        
+	public InterfazUsuario(String nombre, String apellido1, String apellido2, int puntos, String img, String np1, String np2, String np3, String np4, String np5, int pp1, int pp2, int pp3, int pp4, int pp5, String fp1, String fp2, String fp3, String fp4, String fp5) {
+        this.nombreUser = nombre;
+        this.ape1User = apellido1;
+        this.ape2User = apellido2;
+        this.puntosAcum = puntos;
+        this.imagen = img;
+        this.np1=np1;
+        this.np2=np2;
+        this.np3=np3;
+        this.np4=np4;
+        this.np5=np5; 
+        this.pp1=pp1;
+        this.pp2=pp2;
+        this.pp3=pp3;
+        this.pp4=pp4;
+        this.pp5=pp5;
+        this.fp1=fp1;
+        this.fp2=fp2;
+        this.fp3=fp3;
+        this.fp4=fp4;
+        this.fp5=fp5;
+       
 		construyePanelInferior();
         construyePanelSuperior();
         construyePanelIzquierdo();
