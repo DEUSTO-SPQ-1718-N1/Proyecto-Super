@@ -85,7 +85,7 @@ public class EnviarRecomendacion {
 	}
 	 
 	
-	public static void main(String []args){
+	/*public static void main(String []args){
 	  
 	 EnviarRecomendacion  re = new EnviarRecomendacion();
 	 String aviso= re.avisoRecomendacion();
@@ -93,6 +93,6 @@ public class EnviarRecomendacion {
 	 
 	 re.lanzarVentana(aviso, recomendacion); 
 	 
-	}
+	}*/
 	   
 }
