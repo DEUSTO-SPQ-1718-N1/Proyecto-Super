@@ -1,24 +1,5 @@
 package com.deusto.SPQ1718.DSPQ1718P1_32;
 
-<<<<<<< HEAD
-public class EnviarOferta {
-	
-	public void Aviso(){
-		//envia notificacion de que hay una nueva oferta
-		//se carga la ofera
-		
-		System.out.println("Hay una oferta disponible!");
-	}
-	
-	public void Oferta(){
-		
-		String producto ="";
-		int precio = 0;
-		
-		System.out.println ("El producto" + producto + " está de oferta! Consiguelo por SOLO" + precio + " euros!!");
-	}
-
-=======
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -102,5 +83,4 @@ public class EnviarOferta {
 	public void setOferta(String oferta) {
 		this.oferta = oferta;
 	}
->>>>>>> DSPQ1718P1-32
 }
