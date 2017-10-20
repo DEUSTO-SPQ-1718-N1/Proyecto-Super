@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/*Clase que permite acceder a labase de datos y obtener información para conocer
+ * estadísticas de interes
+ */
 public class AccesoEstadisticas {
 
 	Connection conn;
