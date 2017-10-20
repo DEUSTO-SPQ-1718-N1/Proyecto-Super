@@ -37,7 +37,7 @@ public class AccesoEstadisticas {
 		return rs;
 	}
 	
-	public ResultSet getExperincia(int c, int e) throws SQLException{
+	public ResultSet getExperiencia(int c, int e) throws SQLException{
 		
 		Statement stmt = conn.createStatement();
 		 ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia WHERE cliente="+c+" AND empleado ="+e );
