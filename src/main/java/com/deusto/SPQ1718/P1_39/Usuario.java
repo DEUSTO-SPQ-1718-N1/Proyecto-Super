@@ -32,6 +32,7 @@ public class Usuario {
     	this.apellido2 = apellido2;
 	    this.puntos = puntos;
 	    this.img = img;
+	   
 	    
 	  	new InterfazUsuario(nombre, apellido1, apellido2, puntos, img);
 	}
