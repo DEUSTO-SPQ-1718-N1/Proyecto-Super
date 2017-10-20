@@ -1,38 +1,26 @@
 package com.deusto.SPQ1718.Proyecto_Super;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
+import junit.framework.JUnit4TestAdapter;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+import org.junit.*;
+public class AppTest{
+	
+	public static junit.framework.Test suite() {
+		 return new JUnit4TestAdapter(AppTest.class);
+	}
+	
+	@Test
+	public void testMetodo(){
+		int numero = 2;
+		int suma = 1+1;
+		assertTrue(numero==suma);
+	}
+	@Test
+	public void testMetodo2(){
+		int numero = 4;
+		int suma = 1+3;
+		assertTrue(numero==suma);
+	}
 }
+
