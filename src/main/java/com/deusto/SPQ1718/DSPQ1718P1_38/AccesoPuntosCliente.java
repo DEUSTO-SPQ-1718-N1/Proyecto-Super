@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/*Esta clase crear las consultas necesarias para obtener la informacón que 
+ * requiere la ventana de usuario y hacer conexión con la base de datos
+ */
 public class AccesoPuntosCliente {
 	Connection conn;
 	/*Contexión a la BD*/
