@@ -10,7 +10,7 @@ public class AccesoBD_13 {
 	
 	Connection conn;
 	/*
-	 * Método de conexión con la base de datos
+	 * Método de conexión con la base de datos a la dirección especificada
 	 */
 	public AccesoBD_13() throws SQLException{
 		String s = System.getProperty("user.dir");
