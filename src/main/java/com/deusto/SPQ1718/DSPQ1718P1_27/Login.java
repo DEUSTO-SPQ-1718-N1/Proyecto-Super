@@ -111,6 +111,7 @@ public class Login extends JFrame implements ActionListener{
      * El constructor inicializa los metodos de construcion de la ventana y recibe los 
      * parametros necesarios
      */
+    
 	public Login(String nickname, String clave) {
 		
 		construyePanelSuperior();
