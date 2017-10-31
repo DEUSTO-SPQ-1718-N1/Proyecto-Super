@@ -53,8 +53,8 @@ public class Login extends JFrame implements ActionListener{
         
         panelInferior.setBackground(Color.blue);
         panelInferior.add(botonL);
-
     }
+    
     public void construyePanelSuperior(){
 	    panelSuperior = new JPanel();
 
@@ -70,7 +70,7 @@ public class Login extends JFrame implements ActionListener{
         add(Lusuario);
          
         JTextField Tusuario = new JTextField();
-        Tusuario.setBounds(100, 50, 150, 30);
+        Tusuario.setBounds(10, 100, 150, 30);
         add(Tusuario);
                
         panelCentral.setLayout(new GridLayout(3,1));
@@ -85,9 +85,11 @@ public class Login extends JFrame implements ActionListener{
         add(Lcontra);
          
         JPasswordField Tcontra = new JPasswordField();
-        Tcontra.setBounds(100, 100, 150, 30);
+        Tcontra.setBounds(10, 100, 150, 30);
         add(Tcontra);
-
+        panelCentral.add(Lcontra);
+        panelCentral.add(Tcontra);
+        
     }
 	
    /*
@@ -122,9 +124,11 @@ public class Login extends JFrame implements ActionListener{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Login log = new Login("nickname", "clave");
-		
+		//Login log = new Login("nickname", "clave");
+		Login2 frame = new Login2();
+		frame.setVisible(true);
 	}
+	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
