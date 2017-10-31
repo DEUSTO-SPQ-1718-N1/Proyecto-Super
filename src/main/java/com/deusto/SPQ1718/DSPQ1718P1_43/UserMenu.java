@@ -32,7 +32,6 @@ public class UserMenu extends JFrame {
 		getContentPane().setBackground(new Color (135,206,250));
 		setLocationRelativeTo(null);
 	    setResizable(false);
-
 		
 		JButton button_6 = new JButton("Promociones");
 		button_6.addActionListener(new ActionListener() {
