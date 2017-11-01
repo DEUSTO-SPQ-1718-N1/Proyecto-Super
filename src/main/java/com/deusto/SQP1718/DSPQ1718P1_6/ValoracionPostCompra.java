@@ -64,7 +64,7 @@ public class ValoracionPostCompra extends JFrame{
 		textField_3.setColumns(10);
 		
 		JButton aceptarJButton = new JButton("Aceptar");
-		aceptarJButton.setBounds(84, 228, 89, 23);
+		aceptarJButton.setBounds(94, 228, 89, 23);
 		panel.add(aceptarJButton);
 		
 		JButton cancelarJButton = new JButton("Cancelar");
