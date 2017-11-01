@@ -63,6 +63,8 @@ public class Login2 extends JFrame {
 		btnAcceder = new JButton("INICIAR SESION");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Llamar a las pantallas Usuario/Empleado
+				setVisible(false);
 			}
 		});
 		btnAcceder.setBounds(297, 309, 153, 44);
@@ -71,6 +73,10 @@ public class Login2 extends JFrame {
 		btnCrear = new JButton("CREAR CUENTA");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Llamar a LlamarCrearCuenta
+				CrearCuenta frame2 = new CrearCuenta();
+				frame2.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnCrear.setBounds(297, 374, 153, 28);
