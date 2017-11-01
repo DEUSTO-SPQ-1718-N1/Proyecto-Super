@@ -91,8 +91,7 @@ public class ValoracionPostCompra extends JFrame{
 				comentario=comentarioTextField.getText();
 				basedatos.insert(fecha, cliente, empleado,experiencia, comentario);
 			
-				
-				
+						
 			}
 		});
 		aceptarJButton.setBounds(94, 228, 89, 23);
