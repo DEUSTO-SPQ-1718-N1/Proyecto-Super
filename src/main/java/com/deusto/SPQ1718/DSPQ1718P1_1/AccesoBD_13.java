@@ -107,11 +107,25 @@ public class AccesoBD_13 {
 		}
 		return 0;
 	}
-	
-	public int comprarProducto(int c){
-		Statement stmt;
+	/*
+	 * Método para registrar la compra de un producto con código p, en una fecha f, hecha por el empleado em
+	 * al cliente em
+	 */
+	public int comprarProducto(int p, int em, int c, String f){
+		PreparedStatement stmt;
 		try {
-			stmt = conn.createStatement();
+			//Se disminuye el almacen del producto p en uno 
+			int a = disminuirAlmacen(p, 1);
+			//Si hay errores en el método de almacen se devuelve el error
+			if(a == 1){ return 1;}
+			else if(a== 2){ return 2;}
+			//Si todo es correcto se continua con el registro de la compra
+			stmt = conn.prepareStatement("insert into compra(fecha , cliente, empleado, producto) values (?,?,?,?)");
+			stmt.setString(1, f);
+			stmt.setInt(2, c);
+			stmt.setInt(3, em);
+			stmt.setInt(4, p);
+			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -121,14 +135,19 @@ public class AccesoBD_13 {
 		}
 		return 0;
 	}
-	
-	public int insertarProducto(String n, float p){
+	/*
+	 * Inserta un poducto a la base de datos con nombre n, precio p y con una cantidad
+	 * en almacen de c, el statement se hace de tipo prepeared, con el objetivo de evitar
+	 * inyección SQL en la inserción de Strings
+	 */
+	public int insertarProducto(String n, float p, int ca){
 		PreparedStatement stmt;
 		try {
 			
-			stmt = conn.prepareStatement("insert into producto(nombre , precio) values (?,?)");
+			stmt = conn.prepareStatement("insert into producto(nombre , precio, cantidad) values (?,?,?)");
 			stmt.setString(1, n);
 			stmt.setFloat(2, p);
+			stmt.setInt(2, ca);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
