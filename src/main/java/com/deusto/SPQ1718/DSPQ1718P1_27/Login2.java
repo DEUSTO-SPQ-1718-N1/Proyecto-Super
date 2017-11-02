@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 //Esta clase generará la pantalla de LogIn para acceder a la aplicacion
 //El usuario tendrá que introducir su usuario y password  
@@ -24,7 +25,7 @@ public class Login2 extends JFrame {
 	static Login2 frame;
 	private JPasswordField passwordField;
 	private JTextField txtUsuario;
-	private JButton btnCrear, btnAcceder;
+	private JButton btnCrear, btnAcceder, btnExit;
 
 	public Login2() {
 		setTitle("SuperMarket");
@@ -44,6 +45,17 @@ public class Login2 extends JFrame {
 		lblpic.setBounds(200, 0, 371, 175);
 		lblpic.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/Proyecto_Super/logo.png"));
 		contentPane.add(lblpic);
+		
+		btnExit = new JButton("");
+		btnExit.setForeground(Color.BLACK);
+		btnExit.setBounds(729, 26, 27, 28);
+		btnExit.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/DSPQ1718P1_27/exit.png"));
+		contentPane.add(btnExit);
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(297, 268, 153, 28);
@@ -93,5 +105,7 @@ public class Login2 extends JFrame {
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setBounds(297, 247, 80, 16);
 		contentPane.add(lblPassword);
+		
+		
 	}
 }
