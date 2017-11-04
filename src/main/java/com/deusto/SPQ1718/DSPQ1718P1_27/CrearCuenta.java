@@ -31,7 +31,7 @@ public class CrearCuenta extends JFrame {
 	static Login2 frame;
 	private JPasswordField passwordField;
 	private ButtonGroup group;
-	private JRadioButton rdbtnCliente, rdbtnEmpleado;
+//	private JRadioButton rdbtnCliente, rdbtnEmpleado;
 	private JTextField txtUsuario, txtNombre, txtApellido;
 	private JPanel contentPane;
 
