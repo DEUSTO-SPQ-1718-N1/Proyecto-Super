@@ -13,10 +13,14 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.deusto.SPQ1718.Proyecto_Super.Base;
+
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JRadioButton;
@@ -26,6 +30,8 @@ public class CrearCuenta extends JFrame {
 //	private JPanel contentPane;
 	static Login2 frame;
 	private JPasswordField passwordField;
+	private ButtonGroup group;
+	private JRadioButton rdbtnCliente, rdbtnEmpleado;
 	private JTextField txtUsuario, txtNombre, txtApellido;
 	private JPanel contentPane;
 
@@ -125,6 +131,24 @@ public class CrearCuenta extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Llamar a las pantallas Usuario/Empleado
 				setVisible(false);
+				
+				  Base metodosbd = new Base();
+			        
+				/**  int exito =  metodosbd.Guardar(txtNombre.getText(), txtApellido.getText(), 
+				               txtUsuario.getText(), passwordField.getPassword(), 
+				               group.getSelection());
+				 
+				  if(exito>0){
+
+				    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente", 
+				                                  "Éxito en la operación", JOptionPane.INFORMATION_MESSAGE);
+
+				  }else{
+
+				    JOptionPane.showMessageDialog(null, "Los datos no se pudieron guardar\n"
+				                                 + "Inténtelo nuevamente", "Error en la operación", JOptionPane.ERROR_MESSAGE); 
+				  
+				  }**/
 			}
 		});
 		btnAceptar.setBounds(297, 415, 97, 25);
