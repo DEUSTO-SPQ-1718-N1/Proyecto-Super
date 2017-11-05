@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import com.deusto.SPQ1718.Proyecto_Super.Base;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -21,6 +25,8 @@ import javax.swing.SwingConstants;
 public class Login2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	
+	Connection conn;
 	private JPanel contentPane;
 	static Login2 frame;
 	private JPasswordField passwordField;
@@ -76,7 +82,39 @@ public class Login2 extends JFrame {
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Llamar a las pantallas Usuario/Empleado
+				
 				setVisible(false);
+				
+				String nickname =  txtUsuario.getText();
+				char[] pass = passwordField.getPassword();
+				String clave = new String(pass);
+				
+				
+				PreparedStatement ps;
+				try {
+					ps = conn.prepareStatement("SELECT * FROM cliente WHERE nickname  = ? AND clave = ?");
+					ps.setString(1, nickname);
+					ps.setString(2, clave);
+					
+					ResultSet rs = ps.executeQuery();
+					// evalua si el resultset está vacío, de ser así, no hay coincidencias
+					if(!rs.next()) {
+					    // mostrar error de login
+						
+						ps = conn.prepareStatement("SELECT * FROM empleado WHERE nickname  = ? AND clave = ?");
+						ps.setString(1, nickname);
+						ps.setString(2, clave);
+						rs = ps.executeQuery();
+					} else {
+					    // login correcto
+					}
+					rs.close();
+					ps.close();
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}		
 			}
 		});
 		btnAcceder.setBounds(297, 309, 153, 44);
