@@ -1,16 +1,22 @@
 package com.deusto.SQP1718.DSPQ1718P1_6;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import com.deusto.SPQ1718.Proyecto_Super.Base;
 
 public class db {
+	    public Vector lista;
 		Connection conn;
+		PreparedStatement stmt;
+		public String comentario;
 		  public db() throws SQLException {
 		    // -------------------------------------------
 		    // URL format is
@@ -21,7 +27,7 @@ public class db {
 		    conn = DriverManager.getConnection(dbUrl);
 		  }
 		public int insert(String fecha, int cliente, String empleado,int experiencia, String comentario){
-			PreparedStatement stmt;
+			
 			try {
 				stmt = conn.prepareStatement("SELECT * FROM empleado WHERE nombre = ?");
 				stmt.setString(1, empleado);
@@ -43,5 +49,23 @@ public class db {
 			return 0;
 				
 			}
+		//hace un load de los comentarios para verificar que se guardan
+		public Vector loadComentarios(){
+			//inicializamos la lista vacia de arrayList de Strings
+			lista= new Vector();
+			 try {
+				ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia");
+				//mediante el iterador, recorremos la tabla experiencia y seleccioanmos el campo comentario
+				while(rs.next()){
+					comentario=rs.getString("comentario");
+					lista.add(comentario);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return lista;
+		}
 
 }
