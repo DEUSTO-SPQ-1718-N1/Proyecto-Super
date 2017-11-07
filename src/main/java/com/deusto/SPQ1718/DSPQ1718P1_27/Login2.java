@@ -10,9 +10,11 @@ import javax.swing.JLabel;
 import com.deusto.SPQ1718.Proyecto_Super.Base;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -20,8 +22,8 @@ import javax.swing.JFormattedTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-//Esta clase generará la pantalla de LogIn para acceder a la aplicacion
-//El usuario tendrá que introducir su usuario y password  
+/**Esta clase generará la pantalla de LogIn para acceder a la aplicacion
+	El usuario tendrá que introducir su usuario y password  **/
 public class Login2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +36,15 @@ public class Login2 extends JFrame {
 	private JButton btnCrear, btnAcceder, btnExit;
 
 	public Login2() {
-		setTitle("SuperMarket");
+		String s = System.getProperty("user.dir");
+	    String dbUrl = "jdbc:derby:"+s+"\\src\\main\\sql\\base;create=true";
+	    try {
+			conn = DriverManager.getConnection(dbUrl);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	setTitle("SuperMarket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 800, 500);
 		setSize(800, 500);
@@ -81,52 +91,73 @@ public class Login2 extends JFrame {
 		btnAcceder = new JButton("INICIAR SESION");
 		btnAcceder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Llamar a las pantallas Usuario/Empleado
+				/**Llamar a las pantallas Usuario/Empleado**/
 				
 				setVisible(false);
 				
-				String nickname =  txtUsuario.getText();
+				String nick =  txtUsuario.getText();
 				char[] pass = passwordField.getPassword();
 				String clave = new String(pass);
 				
-				
-				PreparedStatement ps;
-				try {
-					ps = conn.prepareStatement("SELECT * FROM cliente WHERE nickname  = ? AND clave = ?");
-					ps.setString(1, nickname);
-					ps.setString(2, clave);
-					
-					ResultSet rs = ps.executeQuery();
-					// evalua si el resultset está vacío, de ser así, no hay coincidencias
-					if(!rs.next()) {
-					    // mostrar error de login
+				Statement stmt;
+							
+					try {
 						
-						ps = conn.prepareStatement("SELECT * FROM empleado WHERE nickname  = ? AND clave = ?");
-						ps.setString(1, nickname);
-						ps.setString(2, clave);
-						rs = ps.executeQuery();
-					} else {
-					    // login correcto
-					}
-					rs.close();
-					ps.close();
+					stmt = conn.createStatement();
+					//String nickC ="";
+					ResultSet rs = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"'");
 					
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}		
-			}
-		});
+					while (rs.next()) {
+					    	
+					    	if(rs.getString("nick").equals(nick))
+					    	{
+					    		//nickC = rs.getString("nick");
+					    		System.out.println(rs.getString("nick"));
+					    		//System.out.println("Usuario correcto");
+					    		
+					    		ResultSet rs1 = stmt.executeQuery("SELECT * FROM cliente WHERE clave = '"+clave+"'");
+					    		while (rs1.next()){
+						    		
+					    			if(rs1.getString("clave").equals(clave))
+							    	{
+						    			//nickC = rs.getString("nick");
+										System.out.println(rs1.getString("clave"));
+										//System.out.println("Contraseña correcta");break;
+										System.out.println("Login Cliente correcto");
+										
+										
+							    	}else {
+							    		
+							    		System.out.println("Contraseña incorrecta");break;
+							    		
+							    	}
+					    		}
+					    	}else{
+					    		
+					    		System.out.println("Usuario incorrecto");break;
+
+					    	}
+					 }
+	
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}	
+			
+				
+				
+			});
 		btnAcceder.setBounds(297, 309, 153, 44);
 		contentPane.add(btnAcceder);
 		
 		btnCrear = new JButton("CREAR CUENTA");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Llamar a LlamarCrearCuenta
-				CrearCuenta frame2 = new CrearCuenta();
+				/**Llamar a LlamarCrearCuenta**/
+				/*CrearCuenta frame2 = new CrearCuenta();
 				frame2.setVisible(true);
-				setVisible(false);
+				setVisible(false);*/
 			}
 		});
 		btnCrear.setBounds(297, 374, 153, 28);
