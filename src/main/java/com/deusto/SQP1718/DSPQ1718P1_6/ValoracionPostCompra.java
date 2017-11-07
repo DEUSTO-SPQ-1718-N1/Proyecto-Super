@@ -30,10 +30,7 @@ public class ValoracionPostCompra extends JFrame{
 	public static ValoracionPostCompra clase;
 	
 	
-	public static void main(String[] args) {
-	 clase= new ValoracionPostCompra(1);
-	 clase.setVisible(true);
-	}
+	
 	public ValoracionPostCompra(int id){
 		this.cliente=id;
 		try {
