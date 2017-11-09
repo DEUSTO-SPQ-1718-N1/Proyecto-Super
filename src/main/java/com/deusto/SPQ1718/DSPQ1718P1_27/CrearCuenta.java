@@ -1,28 +1,24 @@
 package com.deusto.SPQ1718.DSPQ1718P1_27;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
 import com.deusto.SPQ1718.Proyecto_Super.Base;
-
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JRadioButton;
 
 public class CrearCuenta extends JFrame {
@@ -31,9 +27,11 @@ public class CrearCuenta extends JFrame {
 	static Login2 frame;
 	private JPasswordField passwordField;
 	private ButtonGroup group;
-//	private JRadioButton rdbtnCliente, rdbtnEmpleado;
+	private JRadioButton rdbtnCliente, rdbtnEmpleado;
 	private JTextField txtUsuario, txtNombre, txtApellido;
 	private JPanel contentPane;
+	Connection conn;
+	int result = 0;
 
 	/**
 	 * Launch the application.
@@ -56,7 +54,6 @@ public class CrearCuenta extends JFrame {
 	 * Create the frame.
 	 */
 	public CrearCuenta() {
-		final JFrame frame2 = new JFrame();
 		setTitle("SuperMarket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 800, 500);
@@ -68,8 +65,7 @@ public class CrearCuenta extends JFrame {
 		getContentPane().setBackground(new Color (135,206,250));
 		setLocationRelativeTo(null);
 	    setResizable(false);
- 
-		
+ 		
 		JLabel lblpic = new JLabel("");
 		lblpic.setBounds(200, 0, 371, 175);
 		lblpic.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/Proyecto_Super/logo.png"));
@@ -126,38 +122,17 @@ public class CrearCuenta extends JFrame {
 		lblApellido.setBounds(200, 269, 56, 16);
 		contentPane.add(lblApellido);
 		
-		JButton btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Llamar a las pantallas Usuario/Empleado
-				setVisible(false);
-				
-				  Base metodosbd = new Base();
-			        
-				/**  int exito =  metodosbd.Guardar(txtNombre.getText(), txtApellido.getText(), 
-				               txtUsuario.getText(), passwordField.getPassword(), 
-				               group.getSelection());
-				 
-				  if(exito>0){
-
-				    JOptionPane.showMessageDialog(null, "Los datos se han guardado correctamente", 
-				                                  "Éxito en la operación", JOptionPane.INFORMATION_MESSAGE);
-
-				  }else{
-
-				    JOptionPane.showMessageDialog(null, "Los datos no se pudieron guardar\n"
-				                                 + "Inténtelo nuevamente", "Error en la operación", JOptionPane.ERROR_MESSAGE); 
-				  
-				  }**/
-			}
-		});
-		btnAceptar.setBounds(297, 415, 97, 25);
-		contentPane.add(btnAceptar);
-		
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//Volver a la pantalla de LogIn
+			/**Limpiar formulario
+				txtNombre.setText(null);
+				txtApellido.setText(null);
+				txtUsuario.setText(null);
+				passwordField.setText(null);
+				group.isSelected(null);**/
+				
+			/**Volver a la pantalla de LogIn	**/
 				Login2 frame = new Login2();
 				frame.setVisible(true);
 				setVisible(false);
@@ -172,19 +147,82 @@ public class CrearCuenta extends JFrame {
 		lblIntroduzcaLosSiguientes.setBounds(234, 194, 282, 16);
 		contentPane.add(lblIntroduzcaLosSiguientes);
 		
-		JRadioButton rdbtnCliente = new JRadioButton("CLIENTE");
+		final JRadioButton rdbtnCliente = new JRadioButton("CLIENTE");
 		rdbtnCliente.setForeground(Color.GRAY);
 		rdbtnCliente.setBounds(297, 383, 127, 25);
 		contentPane.add(rdbtnCliente);
+		rdbtnCliente.setActionCommand("Cliente");
 		
-		JRadioButton rdbtnEmpleado = new JRadioButton("EMPLEADO");
+		final JRadioButton rdbtnEmpleado = new JRadioButton("EMPLEADO");
 		rdbtnEmpleado.setForeground(Color.GRAY);
 		rdbtnEmpleado.setBounds(430, 383, 127, 25);
 		contentPane.add(rdbtnEmpleado);
+		rdbtnEmpleado.setActionCommand("Empleado");
 		
 		ButtonGroup group = new ButtonGroup();
 		group.add(rdbtnCliente);
 		group.add(rdbtnEmpleado);
+		
+		rdbtnCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(rdbtnCliente.isSelected()){
+					result = 1;
+					System.out.println("Cliente");
+					System.out.println(result);
+				}
+			}		
+		});
+		
+		rdbtnEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(rdbtnEmpleado.isSelected()){
+					result = 2;
+					System.out.println("Empleado");
+					System.out.println(result);
+				}
+			}		
+		});
+		
+		System.out.println(result);	
+		
+		JButton btnAceptar = new JButton("ACEPTAR");
+		btnAceptar.addActionListener(new ActionListener() {
+			public  void actionPerformed(ActionEvent e) {
+				String nombre = txtNombre.getText(); 
+				String apellido = txtApellido.getText(); 
+				String usuario= txtUsuario.getText(); 
+				char[] pass = passwordField.getPassword();
+				String clave = new String(pass);
+				//String type = group.getSelection().getActionCommand();
+				System.out.println(nombre + " " + apellido + " " + usuario  + " " + clave);
+				
+				/**Guardar los campos en la BD**/
+			  try {
+					if(result==1){
+						System.out.println("Llamando a tabla cliente");
+						Statement stmt = conn.createStatement();
+						stmt.executeUpdate("insert into cliente(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");
+					}else if (result==2){
+						System.out.println("Llamando a tabla empleado");
+						Statement stmt = conn.createStatement();
+						stmt.executeUpdate("insert into empleado(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");
+					}else{
+						System.out.println("ERROR: No se ha seleccionado el perfil ni de cliente ni de empleado");
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				  
+				 	  
+				//Volver a la pantalla de LogIn
+					Login2 frame = new Login2();
+					frame.setVisible(true);
+					setVisible(false);
+			}
+		});
+		btnAceptar.setBounds(297, 415, 97, 25);
+		contentPane.add(btnAceptar);	
 		
 		JLabel label = new JLabel("Perfil");
 		label.setForeground(Color.WHITE);
