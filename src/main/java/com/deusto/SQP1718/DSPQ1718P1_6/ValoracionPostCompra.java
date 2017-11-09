@@ -26,19 +26,14 @@ public class ValoracionPostCompra extends JFrame{
 	public int cliente;
 	public int experiencia;
 	public String comentario;
-	public db basedatos;
+	public dbTest basedatos;
 	public static ValoracionPostCompra clase;
 	
 	
 	
 	public ValoracionPostCompra(int id){
 		this.cliente=id;
-		try {
-			basedatos= new db();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		basedatos= new dbTest();
 		this.setTitle("Valoracion post compra");
 		this.setSize(600, 400);
 		this.setLocationRelativeTo(null);

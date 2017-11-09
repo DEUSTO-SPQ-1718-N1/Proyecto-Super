@@ -19,14 +19,9 @@ public class VisualizacionValoracion extends JFrame{
 		visu= new VisualizacionValoracion();
 		visu.setVisible(true);
 	}
-	public VisualizacionValoracion() throws SQLException{
+	public VisualizacionValoracion() throws SQLException {
 		
-		try {
-			basedatos= new db();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		basedatos= new db();
 		this.setTitle("Visualizacion comentarios");
 		this.setSize(600, 400);
 		this.setLocationRelativeTo(null);
