@@ -85,14 +85,16 @@ public class ValoracionPostCompra extends JFrame{
 		comentarioTextField.setBounds(40, 170, 461, 93);
 		panel.add(comentarioTextField);
 		comentarioTextField.setColumns(10);
-		
+		//En caso de presonar Aceptar, todos los datos introducidos seran guardados en la bd
 		JButton aceptarJButton = new JButton("Aceptar");
 		aceptarJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//Se recogen todos los campos del Jframe
 				fecha=fechaTextField.getText();
 				empleado=empleadoTextField.getText();
 				experiencia=Integer.parseInt(experienciaTextField.getText());
 				comentario=comentarioTextField.getText();
+				//Se llama al metodo insertar de la bd y le pasamos los campos para que los guarde 
 				basedatos.insert(fecha, cliente, empleado,experiencia, comentario);
 			
 						
@@ -100,7 +102,7 @@ public class ValoracionPostCompra extends JFrame{
 		});
 		aceptarJButton.setBounds(183, 297, 89, 23);
 		panel.add(aceptarJButton);
-		
+		//en caso de presionar el boton cancelar, pondremos todos los jtextfields a null
 		JButton cancelarJButton = new JButton("Cancelar");
 		cancelarJButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
