@@ -13,10 +13,12 @@ import java.util.Vector;
 import com.deusto.SPQ1718.Proyecto_Super.Base;
 
 public class db {
-	    public Vector lista;
 		Connection conn;
 		PreparedStatement stmt;
 		public String comentario;
+		public int numeroFilas=0;
+		public String lista[]; 
+			
 		  public db() throws SQLException {
 		    // -------------------------------------------
 		    // URL format is
@@ -50,15 +52,19 @@ public class db {
 				
 			}
 		//hace un load de los comentarios para verificar que se guardan
-		public Vector loadComentarios(){
+		public String[] loadComentarios(){
+			
 			//inicializamos la lista vacia de arrayList de Strings
-			lista= new Vector();
+			lista= new String[numeroFilas];
 			 try {
+				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia");
 				//mediante el iterador, recorremos la tabla experiencia y seleccioanmos el campo comentario
+				int indice=0;
 				while(rs.next()){
 					comentario=rs.getString("comentario");
-					lista.add(comentario);
+					lista[indice]=comentario;
+					indice++;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -66,6 +72,14 @@ public class db {
 			}
 			
 			return lista;
+		}
+		public int numeroFilas() throws SQLException{
+			Statement stmt = conn.createStatement();
+			 ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia");
+			 while (rs.next()) {
+			    	numeroFilas++;
+			    }
+			return numeroFilas;
 		}
 
 }

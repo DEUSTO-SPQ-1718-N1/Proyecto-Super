@@ -6,15 +6,21 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class VisualizacionValoracion extends JFrame{
 	public db basedatos;
 	private JTable table;
-	public Vector filas;
-	public Vector columna;
-	public VisualizacionValoracion(){
+	public int numeroFilas=0;
+	public static VisualizacionValoracion visu;
+	public static void main(String[] args) throws SQLException{
+		visu= new VisualizacionValoracion();
+		visu.setVisible(true);
+	}
+	public VisualizacionValoracion() throws SQLException{
+		
 		try {
 			basedatos= new db();
 		} catch (SQLException e) {
@@ -30,17 +36,22 @@ public class VisualizacionValoracion extends JFrame{
 		panel.setBounds(0, 0, 584, 351);
 		getContentPane().add(panel);
 		panel.setLayout(null);
+		JScrollPane scrollPane = new JScrollPane();
+		
 		
 		table = new JTable();
 		table.setBounds(10, 33, 564, 288);
 		panel.add(table);
-		
-		 filas= basedatos.loadComentarios();
-		 columna = new Vector();
-		 columna.add("Comentario");
 		 
-		DefaultTableModel datos = new DefaultTableModel(filas,columna);
+		DefaultTableModel datos = new DefaultTableModel();
+		datos.addColumn("Comentario");
+		numeroFilas=basedatos.numeroFilas();
+		System.out.println(numeroFilas);
+		String comentarios[] = basedatos.loadComentarios();
+		datos.addRow(comentarios);
 		table.setModel(datos);
+		table.add(scrollPane);
+		
 		
 	}
 }
