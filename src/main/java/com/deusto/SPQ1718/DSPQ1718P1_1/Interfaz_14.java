@@ -15,6 +15,8 @@ public class Interfaz_14 extends JFrame {
 	private JTextField textField;
 	public Interfaz_14() {
 		
+		this.setSize(600, 400);
+		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
 		
@@ -28,24 +30,28 @@ public class Interfaz_14 extends JFrame {
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
-		
 		JButton btnNewButton_1 = new JButton("Observar un producto");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String c = textField.getText();
+				int cl = Integer.parseInt(c);
+				Interfaz_Obs o = new Interfaz_Obs(cl);
+				o.setVisible(true);
+				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(51, 63, 139, 39);
+		btnNewButton_1.setBounds(51, 63, 161, 39);
 		panel_1.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Insertar un producto");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String c = textField.getText();
-				int cl = Integer.parseInt(c);
-				
+				Interfaz_Ins in = new Interfaz_Ins();
+				in.setVisible(true);
+				dispose();
 			}
 		});
-		btnNewButton.setBounds(233, 63, 139, 39);
+		btnNewButton.setBounds(262, 63, 161, 39);
 		panel_1.add(btnNewButton);
 		
 		textField = new JTextField();
