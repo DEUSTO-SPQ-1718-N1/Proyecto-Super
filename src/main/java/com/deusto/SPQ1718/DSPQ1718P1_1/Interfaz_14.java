@@ -58,8 +58,9 @@ public class Interfaz_14 extends JFrame {
 		textField.setBounds(90, 113, 66, 20);
 		panel_1.add(textField);
 		textField.setColumns(10);
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	
-
 }
