@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import com.deusto.SPQ1718.Proyecto_Super.Base;
+//import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -106,16 +107,15 @@ public class Login2 extends JFrame {
 					stmt = conn.createStatement();
 					//String nickC ="";
 					ResultSet rs = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"'");
-					
-					while (rs.next()) {
-					    	
+					System.out.println("Escribo yo: " + nick);
+					while (rs.next()) {					    	
 					    	if(rs.getString("nick").equals(nick))
 					    	{
 					    		//nickC = rs.getString("nick");
 					    		System.out.println(rs.getString("nick"));
 					    		//System.out.println("Usuario correcto");
 					    		
-					    		ResultSet rs1 = stmt.executeQuery("SELECT * FROM cliente WHERE clave = '"+clave+"'");
+					    		ResultSet rs1 = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"' AND clave = '"+clave+"'");
 					    		while (rs1.next()){
 						    		
 					    			if(rs1.getString("clave").equals(clave))
@@ -123,7 +123,10 @@ public class Login2 extends JFrame {
 						    			//nickC = rs.getString("nick");
 										System.out.println(rs1.getString("clave"));
 										//System.out.println("Contraseña correcta");break;
-										System.out.println("Login Cliente correcto");
+										//UserMenu frame = new UserMenu();
+										//frame.setVisible(true);
+										setVisible(false);
+										System.out.println("Login Cliente correcto");break;
 										
 										
 							    	}else {
@@ -134,8 +137,38 @@ public class Login2 extends JFrame {
 					    		}
 					    	}else{
 					    		
+					    		ResultSet rs2 = stmt.executeQuery("SELECT * FROM empleado WHERE nick = '"+nick+"'");
+					    		while (rs2.next()){
+					    			if(rs.getString("nick").equals(nick))
+							    	{
+					    				System.out.println(rs2.getString("nick"));
+					    				
+					    				ResultSet rs4 = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"' AND clave = '"+clave+"'");
+							    		while (rs4.next()){
+								    		
+							    			if(rs4.getString("clave").equals(clave))
+									    	{
+								    			
+												System.out.println(rs4.getString("clave"));
+												//System.out.println("Contraseña correcta");break;
+												//AdminMenu frame2 = new AdminMenu();
+												//frame2.setVisible(true);
+												setVisible(false);
+												
+												System.out.println("Login Empleado correcto");break;
+													
+									    	}else {
+									    		
+									    		System.out.println("Contraseña incorrecta");break;
+									    		
+									    	}
+							    		}
+							    	}else{
+							    		System.out.println("Contraseña incorrecto");break;
+							    	}
+					    		
+					    		}
 					    		System.out.println("Usuario incorrecto");break;
-
 					    	}
 					 }
 	
