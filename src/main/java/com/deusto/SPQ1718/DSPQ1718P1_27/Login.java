@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -22,7 +23,7 @@ import com.deusto.SPQ1718.Proyecto_Super.App;
 
 public class Login extends JFrame implements ActionListener{
 //Esta clase llama a la pantalla de LogIn
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		//Login log = new Login("nickname", "clave");
 		Login2 frame = new Login2();
