@@ -120,8 +120,8 @@ public class LoginTest {
         // Code that tests something else
     	String nombre = "aitor"; 
 		String apellido = "del"; 
-		String usuario= "aep"; 
-		String clave = "aep";
+		String usuario= "aemp"; 
+		String clave = "aemp";
 	
 		System.out.println(nombre + " " + apellido + " " + usuario  + " " + clave);
 		
