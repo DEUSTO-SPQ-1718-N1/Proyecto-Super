@@ -28,13 +28,16 @@ public class db {
 		    String dbUrl = "jdbc:derby:"+s+"\\src\\main\\sql\\base;create=true";
 		    conn = DriverManager.getConnection(dbUrl);
 		  }
+		  //Metodo para insertar una nueva fila en la tabla experiencia con sus respectivos campos
 		public int insert(String fecha, int cliente, String empleado,int experiencia, String comentario){
 			
 			try {
+				//Primero buscamos en la tabla empleado el id que corresponde al nombre que nos han pasado
 				stmt = conn.prepareStatement("SELECT * FROM empleado WHERE nombre = ?");
 				stmt.setString(1, empleado);
 				ResultSet rs = stmt.executeQuery();
 				int em = rs.getInt("id");
+				//Cuando ya tenemos todos los datos listos los insertamos en la bd
 				stmt = conn.prepareStatement("insert into experiencia(fecha , cliente, empleado, experiencia, comentario) values (?,?,?,?,?)");
 				stmt.setString(1, fecha);
 				stmt.setInt(2, cliente);
@@ -54,7 +57,7 @@ public class db {
 		//hace un load de los comentarios para verificar que se guardan
 		public String[] loadComentarios(){
 			
-			//inicializamos la lista vacia de arrayList de Strings
+			//inicializamos la lista vacia de arrays de Strings
 			lista= new String[numeroFilas];
 			 try {
 				Statement stmt = conn.createStatement();
@@ -73,6 +76,7 @@ public class db {
 			
 			return lista;
 		}
+		//metodo para calcular cuantas filas hay en la tabla experiencia
 		public int numeroFilas() throws SQLException{
 			Statement stmt = conn.createStatement();
 			 ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia");

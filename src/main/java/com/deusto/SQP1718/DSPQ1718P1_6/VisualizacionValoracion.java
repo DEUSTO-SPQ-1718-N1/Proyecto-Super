@@ -42,11 +42,10 @@ public class VisualizacionValoracion extends JFrame{
 		table = new JTable();
 		table.setBounds(10, 33, 564, 288);
 		panel.add(table);
-		 
+		 //Creamos un modelo de tabla nuevo
 		DefaultTableModel datos = new DefaultTableModel();
 		datos.addColumn("Comentario");
 		numeroFilas=basedatos.numeroFilas();
-		System.out.println(numeroFilas);
 		String comentarios[] = basedatos.loadComentarios();
 		datos.addRow(comentarios);
 		table.setModel(datos);
