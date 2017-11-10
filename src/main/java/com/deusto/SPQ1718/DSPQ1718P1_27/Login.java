@@ -22,7 +22,11 @@ import javax.swing.SwingConstants;
 import com.deusto.SPQ1718.Proyecto_Super.App;
 
 public class Login extends JFrame implements ActionListener{
-//Esta clase llama a la pantalla de LogIn
+/**Esta clase llama a la pantalla de LogIn
+ * 
+ * @param args
+ * @throws SQLException
+ */
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		//Login log = new Login("nickname", "clave");

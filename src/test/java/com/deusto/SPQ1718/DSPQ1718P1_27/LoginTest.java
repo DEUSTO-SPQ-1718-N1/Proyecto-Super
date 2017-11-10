@@ -6,15 +6,21 @@ import java.sql.Statement;
 
 import org.junit.*;
 
+import com.deusto.SPQ1718.Proyecto_Super.Base;
+
 public class LoginTest {
 		 
 	Connection conn;
-	/*@BeforeClass
+	
+	@BeforeClass
     public static void setUpClass() throws Exception {
-        // Code executed before the first test method       
+        // Code executed before the first test method 
+		 Base app = new Base();
+		 app.connectionToDerby();
+		 app.normalDbUsage();
     }
  
-    @Before
+	/* @Before
     public void setUp() throws Exception {
         // Code executed before each test    
     }*/

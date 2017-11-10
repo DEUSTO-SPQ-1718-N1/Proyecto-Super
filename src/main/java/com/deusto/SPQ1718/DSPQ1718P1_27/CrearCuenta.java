@@ -21,6 +21,10 @@ import javax.swing.border.EmptyBorder;
 import com.deusto.SPQ1718.Proyecto_Super.Base;
 import javax.swing.JRadioButton;
 
+/**
+ *En esta pantalla el usuario tendrá que introducir sus datos para crear una nueva cuenta 
+ *Los campos introducidos se guardarán en la BD en la tabla correspondiente según indique su perfil (empleado/cliente)
+ **/
 public class CrearCuenta extends JFrame {
 	private static final long serialVersionUID = 1L;
 //	private JPanel contentPane;
@@ -125,12 +129,12 @@ public class CrearCuenta extends JFrame {
 		JButton btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			/**Limpiar formulario
+			/*Limpiar formulario
 				txtNombre.setText(null);
 				txtApellido.setText(null);
 				txtUsuario.setText(null);
 				passwordField.setText(null);
-				group.isSelected(null);**/
+				group.isSelected(null);*/
 				
 			/**Volver a la pantalla de LogIn	**/
 				Login2 frame = new Login2();

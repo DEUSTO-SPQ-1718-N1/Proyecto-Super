@@ -23,8 +23,13 @@ import javax.swing.JFormattedTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-/**Esta clase generará la pantalla de LogIn para acceder a la aplicacion
-	El usuario tendrá que introducir su usuario y password  **/
+/**
+ *El usuario tendrá que introducir su usuario y password  
+ *Se hará la comprobación con la BD de la información introducida
+ *Si el usuario es cliente se mostrará una pantalla de menu para cleintes, 
+ *Si el usuario es empleado se mostrará una pantalla de menu para empleados
+ *También se dará la opción de crear una nueva cuenta a los nuevos usuarios
+ **/
 public class Login2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -45,7 +50,7 @@ public class Login2 extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	setTitle("SuperMarket");
+	    setTitle("SuperMarket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 800, 500);
 		setSize(800, 500);
@@ -62,18 +67,7 @@ public class Login2 extends JFrame {
 		lblpic.setBounds(200, 0, 371, 175);
 		lblpic.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/Proyecto_Super/logo.png"));
 		contentPane.add(lblpic);
-		
-		btnExit = new JButton("");
-		btnExit.setForeground(Color.BLACK);
-		btnExit.setBounds(729, 26, 27, 28);
-		btnExit.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/DSPQ1718P1_27/exit.png"));
-		contentPane.add(btnExit);
-		btnExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-			}
-		});
-		
+			
 		passwordField = new JPasswordField();
 		passwordField.setBounds(297, 268, 153, 28);
 		contentPane.add(passwordField);
