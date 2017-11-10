@@ -1,7 +1,6 @@
 package com.deusto.SPQ1718.DSPQ1718P1_43;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import com.deusto.SPQ1718.DSPQ1718P1_19.InterfazUsuario;
-import com.deusto.SPQ1718.DSPQ1718P1_32.EnviarOferta;
 import com.deusto.SPQ1718.DSPQ1718P1_33.EnviarRecomendacion;
 import com.deusto.SPQ1718.P1_39.Usuario;
 import com.deusto.SPQ1718.Proyecto_Super.Inicio;
@@ -19,6 +17,7 @@ import com.deusto.SPQ1718.Proyecto_Super.Inicio;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//Clase sobre el panel del menu del administrador o empleado
 public class AdminMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -42,7 +41,7 @@ public class AdminMenu extends JFrame {
 		JButton button_6 = new JButton("Registrar productos");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Inicio.frame.setVisible(false);			
+				//Inicio.frame2.setVisible(false);			
 			}
 		});
 		button_6.setBounds(47, 245, 153, 50);
@@ -51,7 +50,7 @@ public class AdminMenu extends JFrame {
 		JButton button_5 = new JButton("Manual de usuario");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Inicio.frame.setVisible(false);
+				//Inicio.frame2.setVisible(false);
 			}
 		});
 		button_5.setBounds(295, 245, 186, 50);
@@ -61,8 +60,12 @@ public class AdminMenu extends JFrame {
 		button_1.setText("<html><p>Historial de</p><p>actividad resumido</p></html>");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Inicio.frame.setVisible(false);
-			}
+				InterfazUsuario frame3 = new InterfazUsuario();
+				frame3.setVisible(true);
+				
+				//new InterfazUsuario();
+				Inicio.frame2.setVisible(false);	
+			}				
 		});
 		button_1.setBounds(575, 245, 153, 50);
 		contentPane.add(button_1);
@@ -70,7 +73,7 @@ public class AdminMenu extends JFrame {
 		JButton button_2 = new JButton("Informes");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Inicio.frame.setVisible(false);
+				//Inicio.frame2.setVisible(false);
 			}
 		});
 		button_2.setBounds(47, 367, 153, 50);
