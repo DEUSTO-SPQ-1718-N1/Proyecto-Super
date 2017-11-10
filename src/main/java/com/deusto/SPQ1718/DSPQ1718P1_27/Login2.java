@@ -1,13 +1,23 @@
 package com.deusto.SPQ1718.DSPQ1718P1_27;
 
 import java.awt.Color;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
+import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import com.deusto.SPQ1718.Proyecto_Super.Base;
+
+
+
+
+
 //import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -17,10 +27,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
+
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
 
 /**
@@ -40,10 +53,10 @@ public class Login2 extends JFrame {
 	private JPasswordField passwordField;
 	private JTextField txtUsuario;
 	private JButton btnCrear, btnAcceder, btnExit;
-
 	public Login2() {
-		String s = System.getProperty("user.dir");
-	    String dbUrl = "jdbc:derby:"+s+"\\src\\main\\sql\\base;create=true";
+		String env= "base";
+		String value = System.getenv(env);
+		String dbUrl = "jdbc:derby:"+value+"\\sql\\base;create=true";
 	    try {
 			conn = DriverManager.getConnection(dbUrl);
 		} catch (SQLException e) {
@@ -65,7 +78,13 @@ public class Login2 extends JFrame {
 		
 		JLabel lblpic = new JLabel("");
 		lblpic.setBounds(200, 0, 371, 175);
-		lblpic.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/Proyecto_Super/logo.png"));
+		String image= "Img";
+		String val = System.getenv(image);
+		String url = val+"\\logo.png";
+		/*String url = "logo.png";
+		String url2 = "src\\main\\resources\\logo.png";*/
+		
+		lblpic.setIcon(new ImageIcon(url));
 		contentPane.add(lblpic);
 			
 		passwordField = new JPasswordField();
@@ -102,69 +121,68 @@ public class Login2 extends JFrame {
 					//String nickC ="";
 					ResultSet rs = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"'");
 					System.out.println("Escribo yo: " + nick);
-					while (rs.next()) {					    	
-					    	if(rs.getString("nick").equals(nick))
+					String nc = "";
+					while (rs.next()){nc = rs.getString("nick");}
+					if(nc.equals(nick))
+			    	{
+			    		//nickC = rs.getString("nick");
+			    		//System.out.println("Usuario correcto");
+			    		
+			    		ResultSet rs1 = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"' AND clave = '"+clave+"'");
+			    		String c = "";
+			    		while (rs1.next()){
+			    			c = rs1.getString("clave");
+			    		}
+			    		
+			    		if(c.equals(clave))
+				    	{
+			    			
+							System.out.println("Contraseña correcta");
+							UserMenu frame = new UserMenu();
+							frame.setVisible(true);
+			    			dispose();
+							System.out.println("Login Cliente correcto");
+							
+							
+				    	}
+			    		else {
+				    		System.out.println("Contraseña incorrecta");
+				    	}
+			    	}
+					else{
+			    		
+			    		ResultSet rs2 = stmt.executeQuery("SELECT * FROM empleado WHERE nick = '"+nick+"'");
+			    		String ne="";
+			    		while (rs2.next()){ne = rs2.getString("nick");}
+			    			if(ne.equals(nick))
 					    	{
-					    		//nickC = rs.getString("nick");
-					    		System.out.println(rs.getString("nick"));
-					    		//System.out.println("Usuario correcto");
-					    		
-					    		ResultSet rs1 = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"' AND clave = '"+clave+"'");
-					    		while (rs1.next()){
-						    		
-					    			if(rs1.getString("clave").equals(clave))
+			    				
+			    				ResultSet rs4 = stmt.executeQuery("SELECT * FROM empleado WHERE nick = '"+nick+"' AND clave = '"+clave+"'");
+			    				String ce="";
+					    		while (rs4.next()){ce =rs4.getString("clave"); }
+						    		System.out.println(ce+" "+clave);
+					    			if(ce.equals(clave))
 							    	{
-						    			//nickC = rs.getString("nick");
-										System.out.println(rs1.getString("clave"));
-										//System.out.println("Contraseña correcta");break;
-										//UserMenu frame = new UserMenu();
-										//frame.setVisible(true);
-										setVisible(false);
-										System.out.println("Login Cliente correcto");break;
+						    			
+										System.out.println("Contraseña correcta");
+										AdminMenu frame2 = new AdminMenu();
+										frame2.setVisible(true);
+										dispose();
 										
-										
+										System.out.println("Login Empleado correcto");
+											
 							    	}else {
 							    		
-							    		System.out.println("Contraseña incorrecta");break;
+							    		System.out.println("Contraseña empleado incorrecta");
 							    		
 							    	}
-					    		}
-					    	}else{
 					    		
-					    		ResultSet rs2 = stmt.executeQuery("SELECT * FROM empleado WHERE nick = '"+nick+"'");
-					    		while (rs2.next()){
-					    			if(rs.getString("nick").equals(nick))
-							    	{
-					    				System.out.println(rs2.getString("nick"));
-					    				
-					    				ResultSet rs4 = stmt.executeQuery("SELECT * FROM cliente WHERE nick = '"+nick+"' AND clave = '"+clave+"'");
-							    		while (rs4.next()){
-								    		
-							    			if(rs4.getString("clave").equals(clave))
-									    	{
-								    			
-												System.out.println(rs4.getString("clave"));
-												//System.out.println("Contraseña correcta");break;
-												//AdminMenu frame2 = new AdminMenu();
-												//frame2.setVisible(true);
-												setVisible(false);
-												
-												System.out.println("Login Empleado correcto");break;
-													
-									    	}else {
-									    		
-									    		System.out.println("Contraseña incorrecta");break;
-									    		
-									    	}
-							    		}
-							    	}else{
-							    		System.out.println("Contraseña incorrecto");break;
-							    	}
-					    		
-					    		}
-					    		System.out.println("Usuario incorrecto");break;
 					    	}
-					 }
+			    			
+			    			else{
+					    		System.out.println("Usuario incorrecto");
+					    	}
+			    	}
 	
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
@@ -182,9 +200,9 @@ public class Login2 extends JFrame {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/**Llamar a LlamarCrearCuenta**/
-				/*CrearCuenta frame2 = new CrearCuenta();
+				CrearCuenta frame2 = new CrearCuenta();
 				frame2.setVisible(true);
-				setVisible(false);*/
+				dispose();
 			}
 		});
 		btnCrear.setBounds(297, 374, 153, 28);
@@ -204,4 +222,6 @@ public class Login2 extends JFrame {
 		
 		
 	}
+	
+	
 }

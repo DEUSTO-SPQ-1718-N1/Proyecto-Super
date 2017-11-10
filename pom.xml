@@ -6,7 +6,6 @@
   <artifactId>Proyecto-Super</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>Proyecto-Super</name>
   <url>http://maven.apache.org</url>
 
@@ -59,8 +58,8 @@
       <resource>
         <directory>src/main/resources</directory>
         <includes>
-          <include>img1.png</include>
-          <include>*.jpg</include>
+          <include>**/*.png</include>
+          <include>**/*.jpg</include>
         </includes>
       </resource>
     </resources>

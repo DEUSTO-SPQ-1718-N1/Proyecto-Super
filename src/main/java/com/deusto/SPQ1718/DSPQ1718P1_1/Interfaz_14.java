@@ -2,20 +2,27 @@ package com.deusto.SPQ1718.DSPQ1718P1_1;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+
+import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Interfaz_14 extends JFrame {
 	private JTextField textField;
 	public Interfaz_14() {
-		
-		this.setSize(600, 400);
+		//setLocationRelativeTo(null);
+		setSize(600, 400);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
@@ -59,8 +66,17 @@ public class Interfaz_14 extends JFrame {
 		panel_1.add(textField);
 		textField.setColumns(10);
 		
+		JButton btnNewButton_2 = new JButton("VOLVER");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AdminMenu frame2 = new AdminMenu();
+				frame2.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_2.setBounds(197, 201, 89, 23);
+		panel_1.add(btnNewButton_2);
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
-	
-	
 }

@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import com.deusto.SPQ1718.DSPQ1718P1_1.Interfaz_14;
 import com.deusto.SPQ1718.DSPQ1718P1_19.InterfazUsuario;
 import com.deusto.SPQ1718.DSPQ1718P1_33.EnviarRecomendacion;
 import com.deusto.SPQ1718.P1_39.Usuario;
@@ -41,7 +42,9 @@ public class AdminMenu extends JFrame {
 		JButton button_6 = new JButton("Registrar productos");
 		button_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Inicio.frame2.setVisible(false);			
+				Interfaz_14 m = new Interfaz_14();
+				m.setVisible(true);
+				dispose();
 			}
 		});
 		button_6.setBounds(47, 245, 153, 50);
@@ -91,7 +94,10 @@ public class AdminMenu extends JFrame {
 		
 		JLabel lblpic = new JLabel("");
 		lblpic.setBounds(200, 0, 371, 175);
-		lblpic.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/Proyecto_Super/logo.png"));
+		String image= "Img";
+		String val = System.getenv(image);
+		String url = val+"\\logo.png";
+		lblpic.setIcon(new ImageIcon(url));
 		contentPane.add(lblpic);
 	}
 }

@@ -6,8 +6,10 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +20,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
 import com.deusto.SPQ1718.Proyecto_Super.Base;
+
 import javax.swing.JRadioButton;
 
 /**
@@ -38,26 +42,18 @@ public class CrearCuenta extends JFrame {
 	int result = 0;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrearCuenta frame2 = new CrearCuenta();
-					frame2.setVisible(true);
-				
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public CrearCuenta() {
+		String env= "base";
+		String value = System.getenv(env);
+		String dbUrl = "jdbc:derby:"+value+"\\sql\\base;create=true";
+	    try {
+			conn = DriverManager.getConnection(dbUrl);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setTitle("SuperMarket");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 800, 500);
@@ -72,7 +68,10 @@ public class CrearCuenta extends JFrame {
  		
 		JLabel lblpic = new JLabel("");
 		lblpic.setBounds(200, 0, 371, 175);
-		lblpic.setIcon(new ImageIcon("src/main/java/com/deusto/SPQ1718/Proyecto_Super/logo.png"));
+		String image= "Img";
+		String val = System.getenv(image);
+		String url = val+"\\logo.png";
+		lblpic.setIcon(new ImageIcon(url));
 		contentPane.add(lblpic);
 		
 		passwordField = new JPasswordField();
@@ -205,11 +204,12 @@ public class CrearCuenta extends JFrame {
 					if(result==1){
 						System.out.println("Llamando a tabla cliente");
 						Statement stmt = conn.createStatement();
-						stmt.executeUpdate("insert into cliente(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");
+						stmt.executeUpdate("insert into cliente(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+"')");
+						//System.out.println("insert into cliente(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");
 					}else if (result==2){
 						System.out.println("Llamando a tabla empleado");
 						Statement stmt = conn.createStatement();
-						stmt.executeUpdate("insert into empleado(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");
+						stmt.executeUpdate("insert into empleado(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+"')");
 					}else{
 						System.out.println("ERROR: No se ha seleccionado el perfil ni de cliente ni de empleado");
 					}
