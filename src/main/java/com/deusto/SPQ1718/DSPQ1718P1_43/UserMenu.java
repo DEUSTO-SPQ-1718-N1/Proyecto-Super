@@ -14,6 +14,8 @@ import com.deusto.SPQ1718.Proyecto_Super.Inicio;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//Clase sobre el panel del menu del usuario o cliente
+
 public class UserMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
