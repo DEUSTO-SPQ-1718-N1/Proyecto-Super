@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.log4j.Logger;
+
 public class AccesoBD_13 {
-	
+	private final static Logger log = Logger.getLogger("Base de datos historia 1");
 	Connection conn;
 	/*
 	 * Método de conexión con la base de datos a la dirección especificada
@@ -24,7 +26,9 @@ public class AccesoBD_13 {
 		String dbUrl = "jdbc:derby:"+value+"\\sql\\base;create=true";
 	    conn = DriverManager.getConnection(dbUrl);
 	}
-	
+	/*
+	 * Zona de eztraccion de datos de un producto por medio de selects
+	 */
 	public int getPuntosP(int p){
 		 int c = 0;
 		try {
@@ -35,6 +39,7 @@ public class AccesoBD_13 {
 			 }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("Error en la Select de PuntosP");
 			e.printStackTrace();
 		}
 		return c;
@@ -51,6 +56,7 @@ public class AccesoBD_13 {
 			 }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("Error en la Select de CantidadP");
 			e.printStackTrace();
 		}
 		return c;
@@ -66,6 +72,7 @@ public class AccesoBD_13 {
 			 }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("Error en la Select de PrecioP");
 			e.printStackTrace();
 		}
 		return pr;
@@ -81,6 +88,7 @@ public class AccesoBD_13 {
 			 }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("Error en la Select de NombreP");
 			e.printStackTrace();
 		}
 		return n;
@@ -96,7 +104,7 @@ public class AccesoBD_13 {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT cantidad FROM producto WHERE id = "+p);
 			/*El código de retorno 1 indica que no se ha encontrado el porducto con id p*/
-			if(rs.next()==false){ return 1;}
+			if(rs.next()==false){ log.warn("No se encuentra Producto aumentar Almacen"); return 1;}
 			nuevac = rs.getInt("cantidad");
 			 System.out.println(nuevac);
 			 nuevac = nuevac + c;
@@ -106,6 +114,7 @@ public class AccesoBD_13 {
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.error("Error en la Update de aumentar Almacen");
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
 			return 3;
 		}
@@ -123,7 +132,7 @@ public class AccesoBD_13 {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT cantidad FROM producto WHERE id = "+p);
 			/*El código de retorno 1 indica que no se ha encontrado el porducto con id p*/
-			if(rs.next()==false){ return 1;}
+			if(rs.next()==false){ log.warn("No se encuentra Producto aumentar Almacen"); return 1;}
 			/*El código de retorno 2 indica que de actualizarse la cantidad en almacen sería negativa, por tanto la operación no se puede hacer*/
 			nuevac = rs.getInt("cantidad") - c;
 			if(nuevac<0){return 2;}
@@ -132,6 +141,7 @@ public class AccesoBD_13 {
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 				e.printStackTrace();
+				log.error("Error en la Update de disminuir Almacen");
 				//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
 				return 3;
 			}
@@ -153,6 +163,7 @@ public class AccesoBD_13 {
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.error("Error en la Select de Precio");
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado	
 			return 3;
 		}
@@ -168,12 +179,13 @@ public class AccesoBD_13 {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT puntos FROM producto WHERE id = "+p);
 			/*El código de retorno 1 indica que no se ha encontrado el porducto con id p*/
-			if(rs.next()==false){ return 1;}
+			if(rs.next()==false){ log.warn("Producto no encontrado"); return 1;}
 			stmt.executeUpdate("update producto set puntos ="+c+" WHERE id ="+p);
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
+			log.error("Error en la Select actualizar Puntos");
 			return 3;
 		}
 		return 0;
@@ -201,6 +213,7 @@ public class AccesoBD_13 {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.error("Error en la Insert Compar Producto");
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
 			return 3;
 		}
@@ -224,6 +237,7 @@ public class AccesoBD_13 {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.error("Error en la Insert Producto");
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
 			return 3;
 		}
