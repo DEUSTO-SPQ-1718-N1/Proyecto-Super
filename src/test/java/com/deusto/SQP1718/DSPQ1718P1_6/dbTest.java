@@ -12,7 +12,7 @@ import java.sql.Statement;
 import org.junit.Test;
 
 public class dbTest {
-	Connection conn;
+	/*Connection conn;
 	PreparedStatement stmt;
 	
 
@@ -60,6 +60,6 @@ public class dbTest {
 		
 		
 		
-	}
+	}*/
 
 }

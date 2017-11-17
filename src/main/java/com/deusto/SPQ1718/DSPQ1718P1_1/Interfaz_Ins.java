@@ -13,11 +13,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import org.apache.log4j.Logger;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
 public class Interfaz_Ins extends JFrame {
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	private JTextField txtC;
 	private JTextField txtPr;
 	private JTextField txtN;
@@ -97,11 +100,17 @@ public class Interfaz_Ins extends JFrame {
 		JButton btnSubir = new JButton("Subir");
 		btnSubir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String n = txtN.getText();
-				Float p = Float.valueOf(txtPr.getText());
-				int ca = Integer.valueOf(txtC.getText());
-				int pun = Integer.valueOf(txtPu.getText());
-				b.insertarProducto(n, p, ca, pun);
+				try{
+					String n = txtN.getText();
+					Float p = Float.valueOf(txtPr.getText());
+					int ca = Integer.valueOf(txtC.getText());
+					int pun = Integer.valueOf(txtPu.getText());
+					b.insertarProducto(n, p, ca, pun);
+				}
+				catch(Exception e1){
+					log.error("Un campo del insert no ha sido correctamente puesto Interfaz_Ins");
+				}
+				
 				Interfaz_14 i = new Interfaz_14();
 				i.setVisible(true);
 				dispose();

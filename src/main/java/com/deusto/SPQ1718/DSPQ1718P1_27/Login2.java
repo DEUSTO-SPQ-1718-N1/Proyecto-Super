@@ -18,6 +18,7 @@ import com.deusto.SPQ1718.Proyecto_Super.Base;
 
 
 
+
 //import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -36,6 +37,8 @@ import java.awt.Font;
 
 import javax.swing.SwingConstants;
 
+import org.apache.log4j.Logger;
+
 /**
  *El usuario tendrá que introducir su usuario y password  
  *Se hará la comprobación con la BD de la información introducida
@@ -44,7 +47,7 @@ import javax.swing.SwingConstants;
  *También se dará la opción de crear una nueva cuenta a los nuevos usuarios
  **/
 public class Login2 extends JFrame {
-
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU5");
 	private static final long serialVersionUID = 1L;
 	
 	Connection conn;
@@ -147,6 +150,8 @@ public class Login2 extends JFrame {
 				    	}
 			    		else {
 				    		System.out.println("Contraseña incorrecta");
+				    		log.warn("Contraseña usuario erronea");
+				    		dispose();
 				    	}
 			    	}
 					else{
@@ -174,6 +179,8 @@ public class Login2 extends JFrame {
 							    	}else {
 							    		
 							    		System.out.println("Contraseña empleado incorrecta");
+							    		log.warn("Contraseña empleado erronea");
+							    		dispose();
 							    		
 							    	}
 					    		
@@ -181,12 +188,16 @@ public class Login2 extends JFrame {
 			    			
 			    			else{
 					    		System.out.println("Usuario incorrecto");
+					    		log.warn("Contraseña login erroneo");
+					    		dispose();
 					    	}
 			    	}
 	
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
+						log.error("SQL incorrecto Clase Inicio Sesión");
 						e1.printStackTrace();
+						dispose();
 					}
 				}	
 			

@@ -12,6 +12,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	<doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
+  
   </properties>
 
   <dependencies>
@@ -51,16 +52,11 @@
       		</plugin>
    		</plugins>
   </reporting>
-  
-  
+
   <build>
   <resources>
       <resource>
         <directory>src/main/resources</directory>
-        <includes>
-          <include>**/*.png</include>
-          <include>**/*.jpg</include>
-        </includes>
       </resource>
     </resources>
   <plugins>

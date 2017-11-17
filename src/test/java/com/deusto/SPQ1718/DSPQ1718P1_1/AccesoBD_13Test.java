@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import org.apache.log4j.Logger;
+
 public class AccesoBD_13Test {
 	static AccesoBD_13 b;
 	@BeforeClass

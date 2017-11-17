@@ -25,6 +25,8 @@ import com.deusto.SPQ1718.Proyecto_Super.Base;
 
 import javax.swing.JRadioButton;
 
+import org.apache.log4j.Logger;
+
 /**
  *En esta pantalla el usuario tendrá que introducir sus datos para crear una nueva cuenta 
  *Los campos introducidos se guardarán en la BD en la tabla correspondiente según indique su perfil (empleado/cliente)
@@ -40,6 +42,7 @@ public class CrearCuenta extends JFrame {
 	private JPanel contentPane;
 	Connection conn;
 	int result = 0;
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU5");
 
 	/**
 	 * Create the frame.
@@ -212,10 +215,12 @@ public class CrearCuenta extends JFrame {
 						stmt.executeUpdate("insert into empleado(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+"')");
 					}else{
 						System.out.println("ERROR: No se ha seleccionado el perfil ni de cliente ni de empleado");
+						log.warn("No se ha elegido opción perfil");
 					}
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error("SQL incorrecto Clase Crear Cuenta");
 				}
 				  
 				 	  

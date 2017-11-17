@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
+
 import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
 
 import java.awt.event.ActionListener;
@@ -20,6 +22,7 @@ import java.awt.event.ActionEvent;
 
 public class Interfaz_14 extends JFrame {
 	private JTextField textField;
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	public Interfaz_14() {
 		//setLocationRelativeTo(null);
 		setSize(600, 400);
@@ -41,7 +44,14 @@ public class Interfaz_14 extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String c = textField.getText();
-				int cl = Integer.parseInt(c);
+				int cl = 0;
+				try{
+					cl = Integer.parseInt(c);
+				}
+				catch(Exception e1){
+					log.error("no se ha pasado un Int Interfaz_14");
+				}
+				
 				Interfaz_Obs o = new Interfaz_Obs(cl);
 				o.setVisible(true);
 				dispose();

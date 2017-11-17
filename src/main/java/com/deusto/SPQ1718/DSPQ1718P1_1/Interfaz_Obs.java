@@ -13,6 +13,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import org.apache.log4j.Logger;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
@@ -21,6 +23,7 @@ public class Interfaz_Obs extends JFrame{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	String n;
 	Float p;
 	int c;
@@ -93,7 +96,13 @@ public class Interfaz_Obs extends JFrame{
 		JButton btnNewButton = new JButton("+");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int cant = Integer.valueOf(textField_2.getText());
+				int cant = 0;
+				try{
+					cant = Integer.valueOf(textField_2.getText());
+				}
+				catch(Exception e1){
+					log.error("no se ha pasado un Int correcto Interfaz_Obs Aumentar Almacen");
+				}
 				b.aumentarAlmacen(cl, cant);
 				Interfaz_14 i = new Interfaz_14();
 				i.setVisible(true);
@@ -112,7 +121,13 @@ public class Interfaz_Obs extends JFrame{
 		JButton button = new JButton("-");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int cant = Integer.valueOf(textField_2.getText());
+				int cant = 0;
+				try{
+					cant = Integer.valueOf(textField_2.getText());
+				}
+				catch(Exception e1){
+					log.error("no se ha pasado un Int correcto Interfaz_Obs Aumentar Almacen");
+				}
 				b.disminuirAlmacen(cl, cant);
 				Interfaz_14 i = new Interfaz_14();
 				i.setVisible(true);
@@ -132,8 +147,14 @@ public class Interfaz_Obs extends JFrame{
 		JButton btnNewButton_1 = new JButton("Actualizar Precio");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				float precio = Float.valueOf(textField.getText());
-				b.actualizarPrecio(cl, precio);
+				float precio = 0;
+				try{
+					precio = Float.valueOf(textField.getText());
+					b.actualizarPrecio(cl, precio);
+				}
+				catch(Exception e1){
+					log.error("no se ha pasado un Float Interfaz_Obs Actualizar Precio");
+				}
 				Interfaz_14 i = new Interfaz_14();
 				i.setVisible(true);
 				dispose();
@@ -145,8 +166,14 @@ public class Interfaz_Obs extends JFrame{
 		JButton btnNewButton_2 = new JButton("Actualizar Puntos");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int puntos = Integer.valueOf(textField_1.getText());
-				b.actualizarPuntos(cl, puntos);
+				int puntos = 0;
+				try{
+					puntos = Integer.valueOf(textField_1.getText());
+					b.actualizarPuntos(cl, puntos);
+				}
+				catch(Exception e1){
+					log.error("no se ha pasado un Int Interfaz_Obs Actualizar Puntos");
+				}
 				Interfaz_14 i = new Interfaz_14();
 				i.setVisible(true);
 				dispose();

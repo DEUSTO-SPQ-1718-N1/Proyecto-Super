@@ -10,7 +10,7 @@ import com.deusto.SPQ1718.Proyecto_Super.Base;
 
 public class LoginTest {
 		 
-	Connection conn;
+	/*Connection conn;
 	
 	@BeforeClass
     public static void setUpClass() throws Exception {
@@ -25,7 +25,7 @@ public class LoginTest {
         // Code executed before each test    
     }*/
  
-    @Test
+  /*  @Test
     public void testValidacion() {
         // Code that tests one thing
     	String nick =  "cli1";
@@ -109,7 +109,7 @@ public class LoginTest {
 		System.out.println(nombre + " " + apellido + " " + usuario  + " " + clave);
 		
 		/**Guardar los campos en la BD**/
-		try {			
+	/*	try {			
 				System.out.println("Llamando a tabla cliente");
 				Statement stmt = conn.createStatement();
 				stmt.executeUpdate("insert into cliente(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");
@@ -132,7 +132,7 @@ public class LoginTest {
 		System.out.println(nombre + " " + apellido + " " + usuario  + " " + clave);
 		
 		/**Guardar los campos en la BD**/
-		try {			
+	/*	try {			
 				System.out.println("Llamando a tabla empleado");
 				Statement stmt = conn.createStatement();
 				stmt.executeUpdate("insert into empleado(nombre , apellido, nick, clave) values ('"+nombre+"', '"+apellido+"', '"+usuario+"', '"+clave+")");

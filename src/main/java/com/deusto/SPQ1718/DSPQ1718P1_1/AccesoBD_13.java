@@ -6,11 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import org.apache.log4j.Logger;
 
 public class AccesoBD_13 {
-	private final static Logger log = Logger.getLogger("Base de datos historia 1");
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	Connection conn;
 	/*
 	 * Método de conexión con la base de datos a la dirección especificada
@@ -18,9 +17,10 @@ public class AccesoBD_13 {
 	
 	/*public static void main(String[] args) throws SQLException {
 		AccesoBD_13 a = new AccesoBD_13();
-		a.aumentarAlmacen(1,5);
+		a.aumentarAlmacen(13,5);
 	}*/
 	public AccesoBD_13() throws SQLException{
+		//BasicConfigurator.configure();
 		String env= "base";
 		String value = System.getenv(env);
 		String dbUrl = "jdbc:derby:"+value+"\\sql\\base;create=true";
@@ -31,6 +31,7 @@ public class AccesoBD_13 {
 	 */
 	public int getPuntosP(int p){
 		 int c = 0;
+		 log.error("Error en la Select de PuntosP");
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT puntos FROM producto  WHERE id = "+p);
