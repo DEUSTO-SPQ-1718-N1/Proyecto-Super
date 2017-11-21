@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class ConexionBaseDatos {
 	Connection conn;
+	/*
 	public static void main(String[] args) throws SQLException {
 		ArrayList<String> e;
 		ConexionBaseDatos a = new ConexionBaseDatos();
@@ -22,7 +23,7 @@ public class ConexionBaseDatos {
 		for (int i=0;i<e.size();i++){
 			System.out.println(e.get(i));
 		}
-	}
+	}*/
 	public ConexionBaseDatos() throws SQLException{
 		String env= "base";
 		String value = System.getenv(env);
@@ -63,8 +64,7 @@ public class ConexionBaseDatos {
 			// TODO Auto-generated catch block
 			
 			e.printStackTrace();
-		}
-    	
+		}  	
     	return suma/coef;
     	    }
 }

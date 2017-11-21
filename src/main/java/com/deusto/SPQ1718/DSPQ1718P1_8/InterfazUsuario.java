@@ -25,12 +25,12 @@ public class InterfazUsuario extends JFrame{
 	private JTable table;
 	private ArrayList<String> comentarios;
 	private JTextField textField;
+	/*
 	public static void main(String[] args) throws SQLException{
 		inter= new InterfazUsuario();
 		inter.setVisible(true);
-
-		
-	}
+	
+	}*/
 	public  InterfazUsuario() throws SQLException{
 		basedatos= new ConexionBaseDatos();
 		this.setTitle("Visualizacion comentarios");
