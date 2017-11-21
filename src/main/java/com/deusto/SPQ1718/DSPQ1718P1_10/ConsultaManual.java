@@ -2,7 +2,6 @@ package com.deusto.SPQ1718.DSPQ1718P1_10;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +15,7 @@ import javax.swing.JPanel;
 import com.deusto.SPQ1718.Proyecto_Super.App;
 
 public class ConsultaManual extends JFrame implements ActionListener{
+	
 	public ConsultaManual() {
 		
 		construyePanelInferior();
