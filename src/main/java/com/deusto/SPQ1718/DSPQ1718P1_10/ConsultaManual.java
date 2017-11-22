@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import javax.swing.SwingConstants;
 
 import com.deusto.SPQ1718.Proyecto_Super.App;
 
@@ -24,8 +24,9 @@ public class ConsultaManual extends JFrame implements ActionListener{
 	
 	//Inicializamos los componentes y parametros
 	//private JLabel ;
-	private JPanel panelInferior;
+	private JPanel panelInferior, panelCentral;
 	private JButton botonV;
+	private JLabel labelTitulo;
 
 	/**
 	 * Launch the application.
@@ -57,6 +58,15 @@ public class ConsultaManual extends JFrame implements ActionListener{
 	       
 	       add(panelInferior,BorderLayout.SOUTH);
 	
+	}
+	
+	public void construyePanelCentral(){
+		panelCentral = new JPanel();
+	        
+        labelTitulo = new JLabel(" ", SwingConstants.CENTER);
+	        
+        panelCentral.setBackground(Color.white);
+        panelCentral.add(labelTitulo);
 	}
 
 	public void construyePanelInferior(){
