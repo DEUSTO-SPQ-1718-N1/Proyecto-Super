@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /*! \ class ConexionBaseDatos "paquete/"
- *  \ Esta clase hace cosas muy guays
+ *  \ Esta clase será la encargada de conectar con la base de datos para recibir información, así luego pasarsela 
+ *  a la interfaz de usuario correspondiente y evitar que esta soporte información de negocio.
  *  
- *  Para eso hacemos una conexión bcidsbhfshdbu
  */
 
 public class ConexionBaseDatos {
