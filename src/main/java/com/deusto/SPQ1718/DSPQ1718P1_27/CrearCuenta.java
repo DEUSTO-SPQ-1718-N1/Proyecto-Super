@@ -21,8 +21,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import com.deusto.SPQ1718.Proyecto_Super.Base;
-
 import javax.swing.JRadioButton;
 
 import org.apache.log4j.Logger;
