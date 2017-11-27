@@ -63,14 +63,46 @@ public class AccesoBD_9 {
 		return n;
 	}
 	
+	public String getNombreE(int emp){
+		 String n="";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT nombre FROM empleado WHERE id = "+ emp);
+			while (rs.next()){
+				 n = rs.getString("nombre");
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			log.error("Error en la Select de NombreP");
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
+	public String getApellidoE(int ape){
+		 String n="";
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT apellido FROM empleado WHERE id = "+ ape);
+			while (rs.next()){
+				 n = rs.getString("apellido");
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			log.error("Error en la Select de NombreP");
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
 	public String getProductoMasVendido() throws SQLException{
 		/*Que producto se ha vendido más*/
 		String n="";
 		try {
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM ( SELECT producto, COUNT(producto) cont FROM compra GROUP BY producto ) as calc1 WHERE (SELECT MAX(cont) m FROM ( SELECT COUNT(producto) cont FROM compra GROUP BY producto ) AS cacl) = cont");
+			ResultSet rs = stmt.executeQuery("SELECT id FROM ( SELECT producto, COUNT(producto) cont FROM compra GROUP BY producto ) as calc1 WHERE (SELECT MAX(cont) m FROM ( SELECT COUNT(producto) cont FROM compra GROUP BY producto ) AS cacl) = cont");
 			while (rs.next()){
-				 n = rs.getString("nombre");
+				 n = rs.getString("id");
 			 }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

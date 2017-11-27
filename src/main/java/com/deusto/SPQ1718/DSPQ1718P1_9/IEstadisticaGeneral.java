@@ -28,7 +28,7 @@ public class IEstadisticaGeneral extends JFrame {
 	private JPanel contentPane;
 	static IEstadisticaGeneral frame;
 	
-	public IEstadisticaGeneral(int res, String resP, Float resP2) throws SQLException {
+	public IEstadisticaGeneral(int res, String resP, Float resP2, int resE, String resENom, String resEApe) throws SQLException {
 		setTitle("Estadisticas generales");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 800, 500);
@@ -40,7 +40,7 @@ public class IEstadisticaGeneral extends JFrame {
 		getContentPane().setBackground(new Color (135,206,250));
 		setLocationRelativeTo(null);
 	    setResizable(false);
-		
+	    
 		JButton button_2 = new JButton("Volver");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -52,7 +52,7 @@ public class IEstadisticaGeneral extends JFrame {
 		button_2.setBounds(287, 377, 153, 50);
 		contentPane.add(button_2);
 		
-		JLabel lblCdigoDelProducto = new JLabel("Nombre del Producto");
+		JLabel lblCdigoDelProducto = new JLabel("Nombre del Producto:");
 		lblCdigoDelProducto.setBounds(43, 202, 135, 50);
 		contentPane.add(lblCdigoDelProducto);
 		
@@ -60,7 +60,7 @@ public class IEstadisticaGeneral extends JFrame {
 		label.setBounds(208, 202, 135, 50);
 		contentPane.add(label);
 		
-		JLabel label_1 = new JLabel("Precio del Producto");
+		JLabel label_1 = new JLabel("Precio del Producto:");
 		label_1.setBounds(43, 263, 135, 50);
 		contentPane.add(label_1);
 		String resP2b = ""+resP2;
@@ -73,7 +73,7 @@ public class IEstadisticaGeneral extends JFrame {
 		lblProductoMasVendido.setBounds(43, 95, 300, 38);
 		contentPane.add(lblProductoMasVendido);
 		
-		JLabel lblCodigoDelProducto = new JLabel("Codigo del Producto");
+		JLabel lblCodigoDelProducto = new JLabel("Codigo del Producto:");
 		lblCodigoDelProducto.setBounds(43, 144, 135, 50);
 		contentPane.add(lblCodigoDelProducto);
 		String resb = ""+res;	
@@ -86,26 +86,24 @@ public class IEstadisticaGeneral extends JFrame {
 		lblEmpleadoConMas_1.setBounds(448, 95, 300, 38);
 		contentPane.add(lblEmpleadoConMas_1);
 		
-		JLabel lblNombreDelEmpleado = new JLabel("Nombre del Empleado");
+		JLabel lblNombreDelEmpleado = new JLabel("Nombre del Empleado:");
 		lblNombreDelEmpleado.setBounds(448, 202, 135, 50);
 		contentPane.add(lblNombreDelEmpleado);
 		
-		AccesoBD_9 cod1 = new AccesoBD_9();
-		String result;
-		ResultSet ResProd = cod1.getEmpleadoMasVentas();
-		
+		//AccesoBD_9 cod1 = new AccesoBD_9();
+		//String result;
+		//ResultSet ResProd = cod1.getEmpleadoMasVentas();
 		//Float ResProd2 = codProd2.getPrecioP(result);
 			
-		
-		JLabel label_5 = new JLabel("null");
+		JLabel label_5 = new JLabel(resENom + " " + resEApe);
 		label_5.setBounds(593, 144, 135, 50);
 		contentPane.add(label_5);
 		
-		JLabel lblUsuarioDelEmpleado = new JLabel("Usuario del Empleado");
+		JLabel lblUsuarioDelEmpleado = new JLabel("Usuario del Empleado:");
 		lblUsuarioDelEmpleado.setBounds(448, 144, 135, 50);
 		contentPane.add(lblUsuarioDelEmpleado);
-		
-		JLabel label_6 = new JLabel("null");
+		String resEid = "" + resE;
+		JLabel label_6 = new JLabel(resEid);
 		label_6.setBounds(593, 202, 135, 50);
 		contentPane.add(label_6);
 	}
