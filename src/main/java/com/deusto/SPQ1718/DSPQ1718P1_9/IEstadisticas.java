@@ -63,7 +63,7 @@ public class IEstadisticas extends JFrame {
 				String ResProd = codProd1.getNombreP(result);
 				Float ResProd2 = codProd1.getPrecioP(result);
 
-				IEstadisticaProducto ipe = new IEstadisticaProducto(ResProd, ResProd2);
+				IEstadisticaProducto ipe = new IEstadisticaProducto(result, ResProd, ResProd2);
 				ipe.setVisible(true);
 				dispose();
 			}
@@ -101,38 +101,48 @@ public class IEstadisticas extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				AccesoBD_9 codProd2 = null;
+				AccesoBD_9 codEmp = null;
 				try {
 					codProd2 = new AccesoBD_9();
+					codEmp = new AccesoBD_9();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				String Res1 = null;
+				String ResEmp = null;
 				try {
 					Res1 = codProd2.getProductoMasVendido();
+					//ResEmp = codProd2.getEmpleadoMasVentas();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
 				System.out.println(Res1);
+				System.out.println(ResEmp);
 				
 				//PRUEBA
-				int result = 1;
+				int resultP = 1;
+				int resultE = 1;
 
 				AccesoBD_9 codProd3 = null;
+				AccesoBD_9 codProd4 = null;
 				try {
 					codProd3 = new AccesoBD_9();
+					codProd4 = new AccesoBD_9();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				String ResProd = codProd3.getNombreP(result);
-				Float ResProd2 = codProd3.getPrecioP(result);
+				String ResProd = codProd3.getNombreP(resultP);
+				Float ResProd2 = codProd3.getPrecioP(resultP);
+				String ResE_Nom = codProd3.getNombreE(resultE);
+				String ResE_Ape = codProd3.getApellidoE(resultE);
 				
 				IEstadisticaGeneral ieg = null;
 				try {
-					ieg = new IEstadisticaGeneral(result, ResProd, ResProd2);
+					ieg = new IEstadisticaGeneral(resultP, ResProd, ResProd2, resultE, ResE_Nom, ResE_Ape);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
