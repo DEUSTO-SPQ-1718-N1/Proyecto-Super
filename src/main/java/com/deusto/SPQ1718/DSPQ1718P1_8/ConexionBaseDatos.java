@@ -1,3 +1,6 @@
+/** @package com.deusto.SPQ1718.DSPQ1718P1_8
+*/
+
 package com.deusto.SPQ1718.DSPQ1718P1_8;
 
 import java.sql.Connection;
@@ -14,7 +17,7 @@ import java.util.ArrayList;
  */
 
 public class ConexionBaseDatos {
-	Connection conn;
+	Connection conn; /**< Objeto de tipo connection para la creación de la llamada a la base de datos */
 	/*
 	public static void main(String[] args) throws SQLException {
 		ArrayList<String> e;
@@ -25,8 +28,8 @@ public class ConexionBaseDatos {
 		}
 	}*/
 	public ConexionBaseDatos() throws SQLException{
-		String env= "base";
-		String value = System.getenv(env);
+		String env= "base"; /**< El nombre de la variable del entorno que contiene la direccion de la base de datos */
+		String value = System.getenv(env); /**< La busqueda asociada a esa variable de entorno */
 		String dbUrl = "jdbc:derby:"+value+"\\sql\\base;create=true";
 	    conn = DriverManager.getConnection(dbUrl);
 	}
@@ -49,6 +52,11 @@ public class ConexionBaseDatos {
 		}
 		return comentarios;
 	}
+	/**
+	 * @param int que representa el id que tiene el cliente del que se desea consultar las opiniones
+	 * @return La división entre la suma de todas las puntuaciones redcogidas por un usuario y la cantidad de las mismas, calculando la media
+	 * aritmética
+	 */
     public int getMedia(int id){
     	ArrayList<Integer> puntos= new ArrayList<Integer>();
     	int suma=0;

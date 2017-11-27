@@ -1,3 +1,6 @@
+/** @package com.deusto.SPQ1718.DSPQ1718P1_8
+ *  @interface Interfaz de usuario 
+*/
 package com.deusto.SPQ1718.DSPQ1718P1_8;
 
 import java.awt.event.ActionEvent;
@@ -53,7 +56,6 @@ public class InterfazUsuario extends JFrame{
 		for(int i=0;i< comentarios.size();i++)
 		{
 			row[i]=comentarios.get(i);
-			//System.out.println(comentarios.get(i));
 		}
 		datos.addRow(row);
 		table.setModel(datos);
