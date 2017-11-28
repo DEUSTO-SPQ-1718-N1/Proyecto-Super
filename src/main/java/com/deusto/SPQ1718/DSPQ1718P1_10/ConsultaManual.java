@@ -19,7 +19,12 @@ import javax.swing.border.EmptyBorder;
 import com.deusto.SPQ1718.Proyecto_Super.App;
 import com.deusto.SPQ1718.DSPQ1718P1_10.AccesoBD_10;
 import com.deusto.SPQ1718.DSPQ1718P1_27.Login2;
+import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
 
+/** 
+* @brief Esta clase creará la ventana de visualización de los manuales existentes en la BD.
+* Se llamará a los metodos get para visualizar los datos de la BD.
+*/
 public class ConsultaManual extends JFrame implements ActionListener{
 	
 	private JButton botonV;
@@ -116,9 +121,9 @@ public class ConsultaManual extends JFrame implements ActionListener{
 		botonV = new JButton(" V O L V E R ");        
 		botonV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {					
-				App frame = new App();
+				AdminMenu frame = new AdminMenu();
 				frame.setVisible(true);
-				setVisible(false);
+				dispose();
 			}
 		});		     
 		botonV.setBounds(325, 427, 135, 25);

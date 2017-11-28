@@ -10,6 +10,9 @@ import java.sql.Statement;
 
 import org.apache.log4j.Logger;
 
+/** 
+*@brief Esta clase contiene los metodos de consulta a la BD mediante sentencias spl.
+*/
 public class AccesoBD_10 {
 	
 	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU10");
@@ -23,6 +26,10 @@ public class AccesoBD_10 {
 		    conn = DriverManager.getConnection(dbUrl);
 	}
 	
+	/** 
+	*@brief Este metodo get hace una selec del titulo
+	*@param t id del manual del que se quiere obtener el titulo
+	*/
 	public String getTitulo(int t){
 		String tit = "";
 		try {
@@ -39,6 +46,10 @@ public class AccesoBD_10 {
 		return tit;
 	}
 	
+	/** 
+	*@brief Este metodo get hace una selec del texto
+	*@param t id del manual del que se quiere obtener el texto
+	*/
 	public String getTexto(int t){
 		String tex = "";
 		try {
@@ -54,37 +65,49 @@ public class AccesoBD_10 {
 		}
 		return tex;
 	}
+	
+	/** 
+	*@brief Este metodo hace una selec del titulo que se quiere visualizar y luego un udpate para añadir los cambios
+	*@param t id del manual del que se quiere obtener el titulo para su posterior edición
+	*@param titulo contendrá el nuevo titulo que se escribirá en la BD
+	*/
 	public int actualizarTitulo(int t, String titulo){
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT titulo FROM manual WHERE id = "+ t);
-			/*El código de retorno 1 indica que no se ha encontrado el manual con id p*/
-			if(rs.next()==false){ log.warn("Titulo no encontrado"); return 1;}
-			stmt.executeUpdate("update manual set titulo ="+titulo+" WHERE id ="+t);
+			ResultSet rs = stmt.executeQuery("SELECT titulo FROM manual WHERE id = "+t);
+			/*El código de retorno 1 indica que no se ha encontrado el manual con id t*/
+			if(rs.next()==false){ log.warn("Manual no encontrado"); return 1;}
+			stmt.executeUpdate("update manual set titulo ='"+titulo+"' WHERE id ="+t);//Registrar un producto
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
-			log.error("Error en la Select actualizar Manual");
+			log.error("Error en la Select actualizar Titulo");
 			return 3;
 		}
 		return 0;
 	}
 	
+	/** 
+	*@brief Este metodo hace una selec del texto que se quiere visualizar y luego un udpate para añadir los cambios
+	*@param t id del manual del que se quiere obtener el texto para su posterior edición
+	*@param texto contendrá el nuevo texto que se escribirá en la BD
+	*/
 	public int actualizarTexto(int t, String texto){
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT texto FROM manual WHERE id = "+ t);
-			/*El código de retorno 1 indica que no se ha encontrado el manual con id p*/
-			if(rs.next()==false){ log.warn("Texto no encontrado"); return 1;}
-			stmt.executeUpdate("update manual set texto ="+texto+" WHERE id ="+t);
+			ResultSet rs = stmt.executeQuery("SELECT texto FROM manual WHERE id = "+t);
+			/*El código de retorno 1 indica que no se ha encontrado el manual con id t*/
+			if(rs.next()==false){ log.warn("Manual no encontrado"); return 1;}
+			stmt.executeUpdate("update manual set texto ='"+texto+"' WHERE id ="+t);
+			
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
-			log.error("Error en la Select actualizar Manual");
+			log.error("Error en la Select actualizar Texto");
 			return 3;
 		}
 		return 0;
