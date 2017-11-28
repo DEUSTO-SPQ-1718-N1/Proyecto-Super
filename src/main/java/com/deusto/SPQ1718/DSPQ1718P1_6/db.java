@@ -10,8 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import com.deusto.SPQ1718.Proyecto_Super.Base;
-
 public class db {
 		Connection conn;
 		PreparedStatement stmt;
