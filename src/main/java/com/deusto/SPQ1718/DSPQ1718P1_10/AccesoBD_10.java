@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 */
 public class AccesoBD_10 {
 	
-	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU5");
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU10");
 	Connection conn;
 
 	public AccesoBD_10() throws SQLException{
