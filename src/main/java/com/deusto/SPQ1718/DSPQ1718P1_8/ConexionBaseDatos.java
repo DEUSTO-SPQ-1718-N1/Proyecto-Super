@@ -58,7 +58,6 @@ public class ConexionBaseDatos {
 	 * aritmética
 	 */
     public int getMedia(int id){
-    	ArrayList<Integer> puntos= new ArrayList<Integer>();
     	int suma=0;
     	int coef =0;
     	try {
