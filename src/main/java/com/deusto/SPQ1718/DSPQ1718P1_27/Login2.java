@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 
 import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
 import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
-import com.deusto.SPQ1718.Proyecto_Super.Base;
 
 
 
