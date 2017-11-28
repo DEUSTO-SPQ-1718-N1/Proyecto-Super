@@ -26,6 +26,10 @@ public class AccesoBD_13 {
 		String dbUrl = "jdbc:derby:"+value+"\\sql\\base;create=true";
 	    conn = DriverManager.getConnection(dbUrl);
 	}
+	public AccesoBD_13(Connection c) throws SQLException{
+		//BasicConfigurator.configure();
+	    conn = c;
+	}
 	/*
 	 * Zona de eztraccion de datos de un producto por medio de selects
 	 */
