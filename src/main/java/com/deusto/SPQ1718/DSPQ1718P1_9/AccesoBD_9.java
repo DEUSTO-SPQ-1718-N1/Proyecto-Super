@@ -16,7 +16,9 @@ public class AccesoBD_9 {
 	Connection conn;
 	
 	/**
-	 * Método de conexión con la base de datos a la dirección especificada
+	 * @brief Método de conexión con la base de datos a la dirección especificada
+	 * 
+	 * @throws SQLException
 	 */
 	public AccesoBD_9() throws SQLException{
 		//BasicConfigurator.configure();

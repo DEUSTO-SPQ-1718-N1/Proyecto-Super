@@ -35,6 +35,8 @@ public class IEstadisticaGeneral extends JFrame {
 	 * @param resE   	codigo del empleado
 	 * @param resENom	nombre del empleado
 	 * @param resEApe	apellido del empleado
+	 * 
+	 * @throws SQLException
 	 */
 	public IEstadisticaGeneral(int res, String resP, Float resP2, int resE, String resENom, String resEApe) throws SQLException {
 		setTitle("Estadisticas generales");
