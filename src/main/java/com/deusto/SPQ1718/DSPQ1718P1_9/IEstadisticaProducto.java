@@ -1,8 +1,6 @@
 package com.deusto.SPQ1718.DSPQ1718P1_9;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,18 +9,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import com.deusto.SPQ1718.DSPQ1718P1_1.Interfaz_14;
-import com.deusto.SPQ1718.Proyecto_Super.Inicio;
+import org.apache.log4j.Logger;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.JTextField;
 import java.awt.Font;
 
-//Clase
+/** @brief Te muestra estadisticas de producto concreto.  
+ */
 public class IEstadisticaProducto extends JFrame {
-
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	static IEstadisticaProducto frame;
@@ -30,10 +26,20 @@ public class IEstadisticaProducto extends JFrame {
 	String nomP="null";
 	Float priceP=null;
 
+	/** @brief Constructor de la clase.
+	 * 
+	 * Genera las estadisticas del producto concreto.
+	 * Los datos de la estadistica son pasados como parametros al crear la 
+	 * estadistica de dicho producto.
+	 *
+	 * @param idP 		codigo del producto
+	 * @param nombreP 	nombre del producto
+	 * @param precioP   precio del producto
+	 * @param url   	direccion del grafico a mostrar como imagen
+	 */
 	public IEstadisticaProducto(int idP, String nombreP, Float precioP) {
 		setTitle("Estadisticas del producto");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, 800, 500);
 		setSize(800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,7 +109,6 @@ public class IEstadisticaProducto extends JFrame {
 	                break;
 	    }
 		
-			
 		lblpic.setIcon(new ImageIcon(url));
 		contentPane.add(lblpic);
 	}
