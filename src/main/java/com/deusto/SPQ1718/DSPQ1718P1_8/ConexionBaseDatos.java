@@ -34,6 +34,7 @@ public class ConexionBaseDatos {
 	    conn = DriverManager.getConnection(dbUrl);
 	}
 	/**
+	 * @brief Metodo para recoger todos los comentarios hechos por un usuario en concreto
 	 * @param int que representa el id que tiene el cliente del que se desea consultar las opiniones
 	 * @return lista de comentarios que haya realizado el usuario con id id
 	 */
@@ -53,6 +54,7 @@ public class ConexionBaseDatos {
 		return comentarios;
 	}
 	/**
+	 * @brief Metodo para conseguir la media de las puntuaciones de un usuario en concreto
 	 * @param int que representa el id que tiene el cliente del que se desea consultar las opiniones
 	 * @return La división entre la suma de todas las puntuaciones redcogidas por un usuario y la cantidad de las mismas, calculando la media
 	 * aritmética
