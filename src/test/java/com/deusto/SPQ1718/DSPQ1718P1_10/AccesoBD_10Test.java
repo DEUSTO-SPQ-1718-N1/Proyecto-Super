@@ -11,7 +11,6 @@ import org.junit.Test;
 */
 public class AccesoBD_10Test {
 
-	private static final String Assertions = null;
 	static AccesoBD_10 b;
 	@BeforeClass
 	public static void con(){
@@ -25,9 +24,9 @@ public class AccesoBD_10Test {
 	
 	/** 
 	*@brief En esta clase se va a probar que el titulo se actualiza
-	*@param m id del manual
-	*@param t titulo del manual m una vez actualizado
-	*@param modif String introducido como titulo
+	*@var int m id del manual
+	*@var String t titulo del manual m una vez actualizado
+	*@var String modif String introducido como titulo
 	* Se actualiza el titulo de m introduciendo un String
 	* 
 	*/
@@ -44,9 +43,9 @@ public class AccesoBD_10Test {
 	
 	/** 
 	*@brief En esta clase se va a probar que el texto se actualiza
-	*@param m id del manual
-	*@param t texto del manual m una vez actualizado
-	*@param modif String introducido como texto
+	*@var int m id del manual
+	*@var String t texto del manual m una vez actualizado
+	*@var String modif String introducido como texto
 	* Se actualiza el texto de m introduciendo un String
 	* 
 	*/
@@ -63,8 +62,8 @@ public class AccesoBD_10Test {
 	
 	/** 
 	*@brief En esta clase se va a probar que el titulo no es vacio
-	*@param m id del manual
-	*@param tit titulo del manual m
+	*@var int m id del manual
+	*@var String tit titulo del manual m
 	*/
 	@Test
 	public void testTit2() {
@@ -76,8 +75,8 @@ public class AccesoBD_10Test {
 	
 	/** 
 	*@brief En esta clase se comprueba si el texto es vacio
-	*@param m id del manual
-	*@param text texto del manual m
+	*@var int m id del manual
+	*@var String text texto del manual m
 	*En este caso da failure porque no es vacio
 	*/
 	@Test

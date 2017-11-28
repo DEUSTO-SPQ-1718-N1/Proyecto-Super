@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import org.apache.log4j.Logger;
+
 import com.deusto.SPQ1718.Proyecto_Super.App;
 import com.deusto.SPQ1718.DSPQ1718P1_10.AccesoBD_10;
 import com.deusto.SPQ1718.DSPQ1718P1_27.Login2;
@@ -34,10 +36,12 @@ public class ConsultaManual extends JFrame implements ActionListener{
 	private String tit1, tit2, tit3, tit4, tit5;
 	private String text1, text2, text3, text4, text5;
 	AccesoBD_10 con;
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU5");
+
+	
 	/**
 	 * Create the frame.
 	 */
-	
 	public void construyeVentana(){   
 			
 		setTitle("Consulta de Manual");                  
@@ -138,6 +142,7 @@ public class ConsultaManual extends JFrame implements ActionListener{
 			con = new AccesoBD_10();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("Error en la conexion a BD");
 			e.printStackTrace();
 		}
 		construyeVentana();  

@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import org.apache.log4j.Logger;
+
 import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
 import com.deusto.SPQ1718.Proyecto_Super.App;
 
@@ -26,6 +28,8 @@ public class EdicionManual extends JFrame {
 	private String tit1, tit2, tit3, tit4, tit5;
 	private String text1, text2, text3, text4, text5;
 	AccesoBD_10 conn;
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU5");
+
 	
 	/** 
 	* @brief Esta clase creará la ventana de edición de los manuales de la BD.
@@ -239,6 +243,7 @@ public class EdicionManual extends JFrame {
 			conn = new AccesoBD_10();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("Error en la conexion a BD");
 			e.printStackTrace();
 		}
 		construyeVentana();  
