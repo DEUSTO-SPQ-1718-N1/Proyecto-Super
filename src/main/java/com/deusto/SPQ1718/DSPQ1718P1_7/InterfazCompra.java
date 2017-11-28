@@ -22,7 +22,11 @@ public class InterfazCompra extends JFrame{
 	private JTextField textField_2;
 	private JTextField textField_3;
 	AccesoBD_35 b;
+	InterfazCompra i;
+	CompraTarjeta t;
+	OperacionTarjeta o;
 	private JTextField textField_4;
+	private JTextField textField_5;
 	public static void main(String[] args){
 		InterfazCompra i = new InterfazCompra();
 		i.setVisible(true);
@@ -53,7 +57,7 @@ public class InterfazCompra extends JFrame{
 			}
 		});
 		btnComprar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnComprar.setBounds(60, 201, 130, 35);
+		btnComprar.setBounds(40, 215, 130, 35);
 		panel.add(btnComprar);
 		
 		JLabel lblCompraDeProducto = new JLabel("Compra de Producto");
@@ -84,6 +88,30 @@ public class InterfazCompra extends JFrame{
 		JButton btnComprarTar = new JButton("COMPRAR TAR");
 		btnComprarTar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				o = new OperacionTarjeta();
+				t = new CompraTarjeta(o);
+				
+				int clave = Integer.valueOf(textField_5.getText());
+				int cliente = Integer.valueOf(textField_4.getText());
+				int producto = Integer.valueOf(textField_2.getText());
+				int cantidad = Integer.valueOf(textField_1.getText());
+				int importe = cantidad * Math.round(b.precioProducto(producto));
+				
+				int comp = t.realizarCompra(cliente, importe, clave, 1);
+				boolean confirma = t.confirmarCompra(comp);
+				String estado = t.verEstado(comp);
+				System.out.println(estado);
+				
+				if(confirma == true){
+					
+					String fecha =textField.getText();
+					int empleado = Integer.valueOf(textField_3.getText());
+				
+					b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
+					
+				}
+				
+				
 			}
 		});
 		btnComprarTar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -91,11 +119,11 @@ public class InterfazCompra extends JFrame{
 		panel.add(btnComprarTar);
 		
 		JLabel lblFechaDdmmaaaa = new JLabel("Fecha dd-mm-aaaa");
-		lblFechaDdmmaaaa.setBounds(35, 58, 104, 14);
+		lblFechaDdmmaaaa.setBounds(35, 58, 122, 14);
 		panel.add(lblFechaDdmmaaaa);
 		
 		JLabel lblNewLabel = new JLabel("Código producto");
-		lblNewLabel.setBounds(32, 115, 86, 14);
+		lblNewLabel.setBounds(32, 115, 111, 14);
 		panel.add(lblNewLabel);
 		
 		JLabel lblCdigoEmpleado = new JLabel("Código empleado");
@@ -114,5 +142,14 @@ public class InterfazCompra extends JFrame{
 		JLabel lblNewLabel_1 = new JLabel("Código Cliente");
 		lblNewLabel_1.setBounds(170, 115, 86, 14);
 		panel.add(lblNewLabel_1);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(264, 262, 86, 20);
+		panel.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblClave = new JLabel("Clave");
+		lblClave.setBounds(294, 247, 46, 14);
+		panel.add(lblClave);
 	}
 }
