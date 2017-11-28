@@ -2,41 +2,35 @@ package com.deusto.SPQ1718.DSPQ1718P1_9;
 
 import java.awt.Color;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import com.deusto.SPQ1718.DSPQ1718P1_1.Interfaz_14;
-import com.deusto.SPQ1718.DSPQ1718P1_27.Login2;
 import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
-import com.deusto.SPQ1718.Proyecto_Super.App;
-import com.deusto.SPQ1718.Proyecto_Super.Inicio;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JTextField;
 
-//Clase
-public class IEstadisticas extends JFrame {
+import org.apache.log4j.Logger;
 
+/** @brief Permite elegir que tipo de estadisticas quieres ver. 
+ * Te redirige IEstadisticaGeneral o a IEstadisticaProducto. */
+public class IEstadisticas extends JFrame {
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU9");
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	static IEstadisticas frame;
 	private JTextField textField;
-	
     private String codProd;
-    private int getPrecioP;
     
 	public IEstadisticas() {
 		setTitle("Menu del Empleado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, 800, 500);
 		setSize(800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -45,7 +39,6 @@ public class IEstadisticas extends JFrame {
 		getContentPane().setBackground(new Color (135,206,250));
 		setLocationRelativeTo(null);
 	    setResizable(false);
-
 		
 		JButton button_6 = new JButton("Aceptar");
 		button_6.addActionListener(new ActionListener() {
@@ -57,8 +50,8 @@ public class IEstadisticas extends JFrame {
 				try {
 					codProd1 = new AccesoBD_9();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error("No se ha escrito el num de producto");
 				}
 				String ResProd = codProd1.getNombreP(result);
 				Float ResProd2 = codProd1.getPrecioP(result);
@@ -83,10 +76,6 @@ public class IEstadisticas extends JFrame {
 		button_2.setBounds(446, 345, 245, 50);
 		contentPane.add(button_2);
 		
-		
-
-
-		
 		JLabel lblCdigoDelProducto = new JLabel("Codigo del Producto");
 		lblCdigoDelProducto.setBounds(101, 114, 245, 50);
 		contentPane.add(lblCdigoDelProducto);
@@ -100,52 +89,50 @@ public class IEstadisticas extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				AccesoBD_9 codProd2 = null;
-				AccesoBD_9 codEmp = null;
-				try {
-					codProd2 = new AccesoBD_9();
-					codEmp = new AccesoBD_9();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				String Res1 = null;
-				String ResEmp = null;
-				try {
-					Res1 = codProd2.getProductoMasVendido();
-					//ResEmp = codProd2.getEmpleadoMasVentas();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				System.out.println(Res1);
-				System.out.println(ResEmp);
-				
-				//PRUEBA
-				int resultP = 1;
-				int resultE = 1;
-
 				AccesoBD_9 codProd3 = null;
-				AccesoBD_9 codProd4 = null;
+				AccesoBD_9 codEmp3 = null;
 				try {
 					codProd3 = new AccesoBD_9();
-					codProd4 = new AccesoBD_9();
+					codEmp3 = new AccesoBD_9();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error("Error de acceso a BD");
 				}
-				String ResProd = codProd3.getNombreP(resultP);
-				Float ResProd2 = codProd3.getPrecioP(resultP);
-				String ResE_Nom = codProd3.getNombreE(resultE);
-				String ResE_Ape = codProd3.getApellidoE(resultE);
+				int ResProd = 0;
+				int ResEmp = 0;
+				
+				try {
+					ResProd = codProd3.getProductoMasVendido();
+					System.out.println("IEstadisticas de Producto: " + ResProd);
+					ResEmp = codEmp3.getEmpleadoMasVentas();
+					System.out.println("IEstadisticas de Empleado: " + ResEmp);
+					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					log.warn("Algo ha fallado, revisar");
+					log.error("Metodo de consulta ha fallado");
+				}
+
+				AccesoBD_9 codProd4 = null;
+				AccesoBD_9 codEmp4 = null;
+				try {
+					codProd4 = new AccesoBD_9();
+					codEmp4 = new AccesoBD_9();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+					log.error("Error de acceso a BD");
+				}
+				String ResProd1 = codProd4.getNombreP(ResProd);
+				Float ResProd2 = codProd4.getPrecioP(ResProd);
+				String ResE_Nom = codEmp4.getNombreE(ResEmp);
+				String ResE_Ape = codEmp4.getApellidoE(ResEmp);
 				
 				IEstadisticaGeneral ieg = null;
 				try {
-					ieg = new IEstadisticaGeneral(resultP, ResProd, ResProd2, resultE, ResE_Nom, ResE_Ape);
+					ieg = new IEstadisticaGeneral(ResProd, ResProd1, ResProd2, ResEmp, ResE_Nom, ResE_Ape);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
+					log.warn("Algo ha fallado, revisar");
 				}
 				ieg.setVisible(true);
 				dispose();
@@ -155,10 +142,20 @@ public class IEstadisticas extends JFrame {
 		contentPane.add(button);
 	}
 
+	/**
+	 * Getter de codProd.
+	 *
+	 * @return codProd
+	 */
 	public String getCodProd() {
 		return codProd;
 	}
 
+	/**
+	 * Setter de codProd.
+	 *
+	 * @return codProd actualizado
+	 */
 	public void setCodProd(String codProd) {
 		this.codProd = codProd;
 	}
