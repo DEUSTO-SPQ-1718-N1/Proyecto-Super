@@ -12,11 +12,14 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import org.apache.log4j.Logger;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
 public class InterfazCompra extends JFrame{
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -46,13 +49,17 @@ public class InterfazCompra extends JFrame{
 		JButton btnComprar = new JButton("COMPRAR EF");
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String fecha =textField.getText();
-				int producto = Integer.valueOf(textField_2.getText());
-				int empleado = Integer.valueOf(textField_3.getText());
-				int cantidad = Integer.valueOf(textField_1.getText());
-				int cliente = Integer.valueOf(textField_4.getText());
-			
-				b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
+				try{
+					String fecha =textField.getText();
+					int producto = Integer.valueOf(textField_2.getText());
+					int empleado = Integer.valueOf(textField_3.getText());
+					int cantidad = Integer.valueOf(textField_1.getText());
+					int cliente = Integer.valueOf(textField_4.getText());
+					b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
+					
+				}catch(Exception e1){
+					log.warn("Uno de los campos en compra efectivo no se ha insertado con el formato adecuado");
+				}
 				
 			}
 		});
@@ -90,25 +97,30 @@ public class InterfazCompra extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				o = new OperacionTarjeta();
 				t = new CompraTarjeta(o);
-				
-				int clave = Integer.valueOf(textField_5.getText());
-				int cliente = Integer.valueOf(textField_4.getText());
-				int producto = Integer.valueOf(textField_2.getText());
-				int cantidad = Integer.valueOf(textField_1.getText());
-				int importe = cantidad * Math.round(b.precioProducto(producto));
-				
-				int comp = t.realizarCompra(cliente, importe, clave, 1);
-				boolean confirma = t.confirmarCompra(comp);
-				String estado = t.verEstado(comp);
-				System.out.println(estado);
-				
-				if(confirma == true){
+				try{
 					
-					String fecha =textField.getText();
-					int empleado = Integer.valueOf(textField_3.getText());
-				
-					b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
+					int clave = Integer.valueOf(textField_5.getText());
+					int cliente = Integer.valueOf(textField_4.getText());
+					int producto = Integer.valueOf(textField_2.getText());
+					int cantidad = Integer.valueOf(textField_1.getText());
+					int importe = cantidad * Math.round(b.precioProducto(producto));
 					
+					int comp = t.realizarCompra(cliente, importe, clave, 1);
+					boolean confirma = t.confirmarCompra(comp);
+					String estado = t.verEstado(comp);
+					System.out.println(estado);
+					
+					if(confirma == true){
+						
+						String fecha =textField.getText();
+						int empleado = Integer.valueOf(textField_3.getText());
+					
+						b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
+						
+					}
+					
+				}catch(Exception e1){
+					log.warn("Uno de los campos en compra tarjeta no se ha insertado con el formato adecuado");
 				}
 				
 				

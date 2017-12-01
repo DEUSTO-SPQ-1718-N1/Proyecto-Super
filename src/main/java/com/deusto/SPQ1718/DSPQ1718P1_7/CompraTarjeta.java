@@ -1,5 +1,7 @@
 package com.deusto.SPQ1718.DSPQ1718P1_7;
 
+import org.apache.log4j.Logger;
+
 /**
  * Clase que se utiliza para gestionar los pagos con tarjeta
  * Como aún no se tiene acceso al servicio, se usan instancias simuladas con los mismos métodos que tendrá la interfaz del servicio
@@ -8,7 +10,7 @@ package com.deusto.SPQ1718.DSPQ1718P1_7;
  */
 
 public class CompraTarjeta {
-	
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	OperacionTarjeta o;/**< Para los pagos con tarjeta se debe utilizar una instancia de lainterfaz de servicio externo que nos permite acceder a las funcionalidades de pago con tarjeta*/
 	/**
 	 * @brief Contructor de la clase
@@ -28,11 +30,14 @@ public class CompraTarjeta {
 	public int realizarCompra(int u, int cant, int clave, int con){
 		
 		if(o.conectarProv(con)!= 0){
+			log.error("Conexión con proveedor fallida");
 			return o.conectarProv(con);/**< devuelve 1*/
 			/*Hacer log de conexion con proveedor fallida*/
+			
 		}
 		else{
 			if(o.mandarDatos(u, clave, cant)!=0){
+				log.error("Error con los datos enviados");
 				return o.mandarDatos(u, clave, cant);/**< deuvleve 3 si no hay fondos y 2 si hay error con usuario y claves*/
 			}
 			return 0;
