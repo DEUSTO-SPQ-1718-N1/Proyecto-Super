@@ -42,16 +42,15 @@ public class IEstadisticas extends JFrame {
 		
 		JButton button_6 = new JButton("Aceptar");
 		button_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {				
 				codProd =  textField.getText();
+				if(codProd.equals("")){log.error("No se ha escrito el num de producto"); }
 				int result = Integer.parseInt(codProd);
-
 				AccesoBD_9 codProd1 = null;
 				try {
 					codProd1 = new AccesoBD_9();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
-					log.error("No se ha escrito el num de producto");
 				}
 				String ResProd = codProd1.getNombreP(result);
 				Float ResProd2 = codProd1.getPrecioP(result);

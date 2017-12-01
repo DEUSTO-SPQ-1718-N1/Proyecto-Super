@@ -133,7 +133,6 @@ public class ConsultaManual extends JFrame implements ActionListener{
 		botonV.setBounds(325, 427, 135, 25);
 		contentPane.add(botonV);
 		
-		
 	}
 	
 	public ConsultaManual(){
