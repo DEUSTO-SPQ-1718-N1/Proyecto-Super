@@ -37,7 +37,7 @@ public class EdicionManual extends JFrame {
 	*/	
 	public void construyeVentana(){   
 		
-		setTitle("Consulta de Manual");                  
+		setTitle("Editar manuales");                  
 	    setSize(800,500); 
 	    setLocationRelativeTo(null);
 	    setResizable(false);

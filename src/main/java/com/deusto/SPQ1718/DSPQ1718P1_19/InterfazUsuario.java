@@ -40,7 +40,7 @@ public class InterfazUsuario extends JFrame{
 		//Icono de la cabecera de la pantalla
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\ALUMNO\\Desktop\\nabavka.jpg"));
 		this.setTitle("Interfaz usuario");
-		this.setSize(800, 500);
+		this.setSize(800,500);
 		this.setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
@@ -72,7 +72,7 @@ public class InterfazUsuario extends JFrame{
 		buttonV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AdminMenu frame = new AdminMenu();
-				frame.setVisible(true);				
+				frame.setVisible(true);
 				dispose();
 			}
 		});

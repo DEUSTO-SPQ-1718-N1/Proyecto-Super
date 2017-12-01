@@ -44,7 +44,7 @@ public class ConsultaManual extends JFrame implements ActionListener{
 	 */
 	public void construyeVentana(){   
 			
-		setTitle("Consulta de Manual");                  
+		setTitle("Manuales de usuario");                  
 	    setSize(800,500); 
 	    setLocationRelativeTo(null);
 	    setResizable(false);

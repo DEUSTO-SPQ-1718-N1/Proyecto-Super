@@ -50,10 +50,10 @@ public class AdminMenu extends JFrame {
 				dispose();
 			}
 		});
-		button_6.setBounds(47, 245, 153, 50);
+		button_6.setBounds(47, 245, 292, 50);
 		contentPane.add(button_6);
 		
-		JButton button_5 = new JButton("Manual de usuario");
+		JButton button_5 = new JButton("Manuales de usuario");
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Inicio.frame2.setVisible(false);
@@ -66,29 +66,26 @@ public class AdminMenu extends JFrame {
 		contentPane.add(button_5);
 				
 		JButton button_1 = new JButton("Historial de actividad resumido");
-		button_1.setText("<html><p>Historial de</p><p>actividad resumido</p></html>");
+		button_1.setText("Historial de actividad resumido");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InterfazUsuario frame3 = new InterfazUsuario();
-				frame3.setVisible(true);
-				
-				//new InterfazUsuario();
-				Inicio.frame2.setVisible(false);	
+				InterfazUsuario frame = new InterfazUsuario();
+				frame.setVisible(true);
+				dispose();
 			}				
 		});
-		button_1.setBounds(575, 245, 153, 50);
+		button_1.setBounds(461, 245, 267, 50);
 		contentPane.add(button_1);
 		
 		JButton button_2 = new JButton("Editar Manuales");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Inicio.frame2.setVisible(false);
 				EdicionManual frame1 = new EdicionManual();
 				frame1.setVisible(true);
 				dispose();
 			}
 		});
-		button_2.setBounds(311, 367, 153, 50);
+		button_2.setBounds(317, 367, 153, 50);
 		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("Estadísticas y tendencias");
@@ -100,13 +97,8 @@ public class AdminMenu extends JFrame {
 			}
 		});
 		button_3.setText("<html><p>Estadísticas y</p><p>tendencias</p></html>");
-		button_3.setBounds(575, 367, 153, 50);
+		button_3.setBounds(558, 367, 170, 50);
 		contentPane.add(button_3);
-		
-		JButton button_4 = new JButton("Presentación de resultados actualizados");
-		button_4.setBounds(294, 245, 186, 50);
-		button_4.setText("<html><p>Presentación de</p><p>resultados actualizados</p></html>");
-		contentPane.add(button_4);
 		
 		JLabel lblpic = new JLabel("");
 		lblpic.setBounds(200, 0, 371, 175);
