@@ -8,9 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
-import org.apache.log4j.Logger;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
@@ -93,17 +90,17 @@ public class IEstadisticaProducto extends JFrame {
 		String url;
 		
 		switch (idMod4) {
-	        case 1: //url = val + "\\r1.png";
-	        		url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r1.png";	
+	        case 1: url = val + "\\r1.png";
+	        		//url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r1.png";	
 	                break;
-	        case 2: //url = val + "\\r2.png";
-	        		url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r2.png";	
+	        case 2: url = val + "\\r2.png";
+	        		//url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r2.png";	
 	        		break;
-	        case 3: //url = val + "\\r3.png";
-	        		url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r3.png";	
+	        case 3: url = val + "\\r3.png";
+	        		//url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r3.png";	
 	        		break;
-	        case 0: //url = val + "\\r4.png";
-	        		url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r4.png";	
+	        case 0: url = val + "\\r4.png";
+	        		//url = "src/main/java/com/deusto/SPQ1718/DSPQ1718P1_9/r4.png";	
 	        		break;
 	        default:url = "Error de grafico";
 	                break;

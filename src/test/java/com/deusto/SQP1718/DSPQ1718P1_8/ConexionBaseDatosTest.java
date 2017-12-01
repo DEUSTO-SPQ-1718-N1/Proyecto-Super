@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,51 +17,42 @@ import com.deusto.SPQ1718.DSPQ1718P1_8.ConexionBaseDatos;
 
 public class ConexionBaseDatosTest {
 	static ConexionBaseDatos db;
-	Connection conn;
-	PreparedStatement stmt;
+	
 	@BeforeClass
 	public static void con(){
+		Connection conn;
+		String env= "base";
+		String value = System.getenv(env);
+		String dbUrl = "jdbc:derby:"+value+"\\sql2\\base;create=true";
 			try {
-			db =  new ConexionBaseDatos();
+			conn = DriverManager.getConnection(dbUrl);
+			db =  new ConexionBaseDatos(conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public ConexionBaseDatosTest () throws SQLException{
-		String env= "base"; /**< El nombre de la variable del entorno que contiene la direccion de la base de datos */
-		String value = System.getenv(env); /**< La busqueda asociada a esa variable de entorno */
-		String dbUrl = "jdbc:derby:"+value+"\\sql2\\base;create=true";
-	    conn = DriverManager.getConnection(dbUrl);
-	}
+	/**
+	 * 	Prueba del cálculo correcto de medias
+	 */
 	@Test
 	public void testgetMedia() {
-		int id=1;
-		int media=0;
-		int numeroFilas=0;
-		int totalPuntuaciones=0;
+		int m = db.getMedia(1);
+		int num  =db.getNumExp(1);
+		int s= db.getSumaExp(1);
 		
-		
-		try {
-			//Primero buscamos en la tabla empleado el id que corresponde al nombre que nos han pasado
-			stmt = conn.prepareStatement("SELECT * FROM experiencia WHERE id = ?");
-			stmt.setInt(1, id);
-			ResultSet rs = stmt.executeQuery();
-			 while (rs.next()) {
-				 numeroFilas++;
-				 totalPuntuaciones = totalPuntuaciones + rs.getInt("experiencia");
-			 }
-			//Cuando ya tenemos todos los datos listos los insertamos en la bd
+		int m2=s/num;
+		assertEquals(m2,m);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
-			
-		}
-		media=totalPuntuaciones/numeroFilas;
-		assertEquals(media, db.getMedia(1), 0.01);
-		
+	}
+	/**
+	 * Prueba de la extracción correcta de comentarios
+	 */
+	@Test
+	public void testgetComentarios(){
+		ArrayList<String> a = db.getComentarios(1);
+		String c = a.get(1);
+		assertEquals("Bien",c);
 	}
 
 }

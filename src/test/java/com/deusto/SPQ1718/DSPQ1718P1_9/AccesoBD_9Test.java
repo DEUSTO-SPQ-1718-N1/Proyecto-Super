@@ -76,7 +76,7 @@ public class AccesoBD_9Test {
 	@Test
 	public void test3() throws SQLException{
 		int s = b.getProductoMasVendido();
-		int s2= 2;
+		int s2= 1;
 		assertTrue(s==s2);
 	}
 	

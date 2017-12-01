@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
  */
 
 public class CompraTarjeta {
-	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU7");
 	OperacionTarjeta o;/**< Para los pagos con tarjeta se debe utilizar una instancia de lainterfaz de servicio externo que nos permite acceder a las funcionalidades de pago con tarjeta*/
 	/**
 	 * @brief Contructor de la clase

@@ -27,6 +27,9 @@ public class ConexionBaseDatos {
 			System.out.println(e.get(i));
 		}
 	}*/
+	public ConexionBaseDatos(Connection conn) throws SQLException{
+		this.conn = conn;
+	}
 	public ConexionBaseDatos() throws SQLException{
 		String env= "base"; /**< El nombre de la variable del entorno que contiene la direccion de la base de datos */
 		String value = System.getenv(env); /**< La busqueda asociada a esa variable de entorno */
@@ -76,4 +79,45 @@ public class ConexionBaseDatos {
 		}  	
     	return suma/coef;
     	    }
+    /**
+     * 
+     * @param id del cliente que ha dejado su opinion
+     * @return suma de las puntuaciones que ha realizado
+     */
+    public int getSumaExp(int id){
+    	
+    	int suma=0;
+    	try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia  WHERE cliente = "+id);
+			while (rs.next()){
+				suma = suma + rs.getInt("experiencia");
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}  	
+    	return suma;
+    }
+    /**
+     * 
+     * @param id del cliente que ha dejado su opinion
+     * @return número de opiniones que el cliente con id ha dejado
+     */
+    public int getNumExp(int id){
+    	int num=0;
+    	try {
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM experiencia  WHERE cliente = "+id);
+			while (rs.next()){
+				num++;
+			 }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}  	
+    	return num;
+    }
 }

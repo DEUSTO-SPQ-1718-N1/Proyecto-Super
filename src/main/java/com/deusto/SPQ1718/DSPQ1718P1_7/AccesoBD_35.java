@@ -20,7 +20,7 @@ import com.deusto.SPQ1718.DSPQ1718P1_1.AccesoBD_13;
  *
  */
 public class AccesoBD_35 {
-	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU7");
 	Connection conn;/**< atributo que permite la conexión a la BD */
 	AccesoBD_13 b;/**< Uso de consultas de acceso necesarias que ya han sido creadas en sprints anteriores @see com.deusto.SPQ1718.DSPQ1718P1_1.AccesoBD_13 */
 	/**
@@ -133,6 +133,47 @@ public class AccesoBD_35 {
 	 */
 	public Float precioProducto(int p){
 		return b.getPrecioP(p);
+	}
+	
+	public int  getNumProd(){
+		int num = 0;
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM producto");
+			while (rs.next()){
+				num++;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+	}
+	
+	public ArrayList<String> getNombresP1(){
+		ArrayList<String> a = new ArrayList<String>();
+		int num = getNumProd();
+		for(int i=0; i<num; i++){
+			a.add(b.getNombreP(1));
+		}
+		return a;
+	}
+	
+	public ArrayList<String>  getNumProd2(){
+		ArrayList<String> a = new ArrayList<String>();
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT nombre FROM producto");
+			while (rs.next()){
+				a.add(rs.getString("nombre"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return a;
 	}
 
 }

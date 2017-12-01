@@ -19,7 +19,7 @@ import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
 public class InterfazCompra extends JFrame{
-	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU7");
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
