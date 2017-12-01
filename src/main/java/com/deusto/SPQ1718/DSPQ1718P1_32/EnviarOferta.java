@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import com.deusto.SPQ1718.Proyecto_Super.App;
 
 public class EnviarOferta {
@@ -52,9 +53,9 @@ public class EnviarOferta {
 		JButton buttonV = new JButton("V O L V E R");
 		buttonV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				App frame = new App();
-				frame.setVisible(true);
-				ventanaO.setVisible(false);
+				UserMenu frame = new UserMenu();
+				frame.setVisible(true);				
+				ventanaO.dispose();
 			}
 		});
 		buttonV.setBounds(480, 367, 165, 50);

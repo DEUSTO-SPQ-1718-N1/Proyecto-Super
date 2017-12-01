@@ -10,8 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import com.deusto.SPQ1718.DSPQ1718P1_1.Interfaz_14;
+import com.deusto.SPQ1718.DSPQ1718P1_10.ConsultaManual;
+import com.deusto.SPQ1718.DSPQ1718P1_10.EdicionManual;
 import com.deusto.SPQ1718.DSPQ1718P1_19.InterfazUsuario;
 import com.deusto.SPQ1718.DSPQ1718P1_33.EnviarRecomendacion;
+import com.deusto.SPQ1718.DSPQ1718P1_9.IEstadisticas;
 import com.deusto.SPQ1718.P1_39.Usuario;
 import com.deusto.SPQ1718.Proyecto_Super.Inicio;
 
@@ -54,9 +57,12 @@ public class AdminMenu extends JFrame {
 		button_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Inicio.frame2.setVisible(false);
+				ConsultaManual frame = new ConsultaManual();
+				frame.setVisible(true);
+				dispose();
 			}
 		});
-		button_5.setBounds(295, 245, 186, 50);
+		button_5.setBounds(47, 367, 186, 50);
 		contentPane.add(button_5);
 				
 		JButton button_1 = new JButton("Historial de actividad resumido");
@@ -73,22 +79,32 @@ public class AdminMenu extends JFrame {
 		button_1.setBounds(575, 245, 153, 50);
 		contentPane.add(button_1);
 		
-		JButton button_2 = new JButton("Informes");
+		JButton button_2 = new JButton("Editar Manuales");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Inicio.frame2.setVisible(false);
+				EdicionManual frame1 = new EdicionManual();
+				frame1.setVisible(true);
+				dispose();
 			}
 		});
-		button_2.setBounds(47, 367, 153, 50);
+		button_2.setBounds(311, 367, 153, 50);
 		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("Estadísticas y tendencias");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				IEstadisticas frest1 = new IEstadisticas();
+				frest1.setVisible(true);
+				dispose();
+			}
+		});
 		button_3.setText("<html><p>Estadísticas y</p><p>tendencias</p></html>");
 		button_3.setBounds(575, 367, 153, 50);
 		contentPane.add(button_3);
 		
 		JButton button_4 = new JButton("Presentación de resultados actualizados");
-		button_4.setBounds(295, 367, 186, 50);
+		button_4.setBounds(294, 245, 186, 50);
 		button_4.setText("<html><p>Presentación de</p><p>resultados actualizados</p></html>");
 		contentPane.add(button_4);
 		

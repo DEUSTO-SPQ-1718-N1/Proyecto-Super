@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import com.deusto.SPQ1718.Proyecto_Super.App;
 
 public class EnviarRecomendacion {
@@ -46,9 +47,9 @@ public class EnviarRecomendacion {
 		JButton buttonV = new JButton("V O L V E R");
 		buttonV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				App frame = new App();
-				frame.setVisible(true);
-				ventanaM.setVisible(false);
+				UserMenu frame = new UserMenu();
+				frame.setVisible(true);				
+				ventanaM.dispose();
 			}
 		});
 		buttonV.setBounds(480, 367, 165, 50);

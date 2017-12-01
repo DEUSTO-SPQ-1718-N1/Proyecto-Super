@@ -49,10 +49,10 @@ public class UserMenu extends JFrame {
 				String aviso= of.aviso();
 				String oferta = of.oferta(); 
 				of.lanzarVentanaOfertas(aviso, oferta);	
-				Inicio.frame.setVisible(false);
+				dispose();
 			}
 		});
-		button_6.setBounds(47, 245, 187, 50);
+		button_6.setBounds(71, 367, 187, 50);
 		contentPane.add(button_6);
 		
 		JButton button_5 = new JButton("Recomendaciones personalizadas");
@@ -62,10 +62,10 @@ public class UserMenu extends JFrame {
 				String aviso= re.avisoRecomendacion();
 				String recomendacion = re.productoRecomendado();
 				re.lanzarVentanaRecomendaciones(aviso, recomendacion); 
-				Inicio.frame.setVisible(false);
+				dispose();
 			}
 		});
-		button_5.setBounds(47, 367, 243, 50);
+		button_5.setBounds(71, 245, 286, 50);
 		contentPane.add(button_5);
 				
 		JButton button_1 = new JButton("Puntos acumulados");
@@ -75,11 +75,10 @@ public class UserMenu extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Usuario("Veronica", "Sanchez", "Perez", 1454, url3, "Nesquick", "Pan baguette", "Tarta de manzana", "Balon de futbol", "Lavadora Siemens", 5, 1, 7, 3, 35, "12/09/2017", "12/09/2017", "12/09/2017", "04/09/2017", "04/09/2017");
-				Inicio.frame.setVisible(false);
 				dispose();
 			}
 		});
-		button_1.setBounds(287, 245, 220, 50);
+		button_1.setBounds(442, 245, 286, 50);
 		contentPane.add(button_1);
 		
 		JButton button_3 = new JButton("Valorar una Compra");
@@ -91,12 +90,8 @@ public class UserMenu extends JFrame {
 				dispose();
 			}
 		});
-		button_3.setBounds(321, 367, 165, 50);
+		button_3.setBounds(313, 367, 165, 50);
 		contentPane.add(button_3);
-		
-		JButton button_4 = new JButton("Manual de usuario");
-		button_4.setBounds(563, 245, 165, 50);
-		contentPane.add(button_4);
 		
 		JLabel lblpic = new JLabel("");
 		lblpic.setBounds(200, 0, 371, 175);
