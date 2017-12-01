@@ -1,15 +1,22 @@
 package com.deusto.SPQ1718.DSPQ1718P1_19;
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+
+import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
+import com.deusto.SPQ1718.DSPQ1718P1_43.UserMenu;
 import com.deusto.SPQ1718.Proyecto_Super.App;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,9 +71,9 @@ public class InterfazUsuario extends JFrame{
 		JButton buttonV = new JButton("V O L V E R");
 		buttonV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				App frame = new App();
-				frame.setVisible(true);
-				setVisible(false);
+				AdminMenu frame = new AdminMenu();
+				frame.setVisible(true);				
+				dispose();
 			}
 		});
 		buttonV.setBounds(480, 367, 165, 50);
