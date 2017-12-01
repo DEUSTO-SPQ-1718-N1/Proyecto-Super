@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
 
 public class Interfaz_34 extends JFrame{
+	
 	private JTable table;
 	AccesoBD_35 b;
 	ArrayList<ArrayList<String>> tabla;

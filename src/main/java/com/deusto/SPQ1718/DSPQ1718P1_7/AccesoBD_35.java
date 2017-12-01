@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.deusto.SPQ1718.DSPQ1718P1_1.AccesoBD_13;
 
 /**
@@ -18,6 +20,7 @@ import com.deusto.SPQ1718.DSPQ1718P1_1.AccesoBD_13;
  *
  */
 public class AccesoBD_35 {
+	private final static Logger log = Logger.getLogger("com.deusto.SPQ1718.DSPQ1718P1.HU1");
 	Connection conn;/**< atributo que permite la conexión a la BD */
 	AccesoBD_13 b;/**< Uso de consultas de acceso necesarias que ya han sido creadas en sprints anteriores @see com.deusto.SPQ1718.DSPQ1718P1_1.AccesoBD_13 */
 	/**
@@ -71,6 +74,7 @@ public class AccesoBD_35 {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.error("Error SQL en método comprarProducto");
 			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
 			return 3;
 		}
@@ -112,6 +116,7 @@ public class AccesoBD_35 {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.error("Error SQL en getCompras");
 		}
 		/**
 		 * Se monta la tabla con las listas alimentadas
