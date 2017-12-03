@@ -6,8 +6,6 @@ import java.sql.Statement;
 
 import org.junit.*;
 
-import com.deusto.SPQ1718.Proyecto_Super.Base;
-
 public class LoginTest {
 		 
 	/*Connection conn;
