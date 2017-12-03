@@ -14,6 +14,7 @@ import com.deusto.SPQ1718.DSPQ1718P1_32.EnviarOferta;
 import com.deusto.SPQ1718.DSPQ1718P1_33.EnviarRecomendacion;
 import com.deusto.SPQ1718.DSPQ1718P1_6.ValoracionPostCompra;
 import com.deusto.SPQ1718.DSPQ1718P1_6.VisualizacionValoracion;
+import com.deusto.SPQ1718.DSPQ1718P1_8.InterfazUsuario;
 import com.deusto.SPQ1718.P1_39.Usuario;
 import com.deusto.SPQ1718.Proyecto_Super.Inicio;
 
@@ -104,14 +105,15 @@ public class UserMenu extends JFrame {
 		JButton button = new JButton("Ver valoraciones de Compras");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				InterfazUsuario u = null;
 				VisualizacionValoracion v1 = null;
 				try {
-					v1 = new VisualizacionValoracion();
+					u = new InterfazUsuario();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				v1.setVisible(true);
+				u.setVisible(true);
 				dispose();
 			}
 		});

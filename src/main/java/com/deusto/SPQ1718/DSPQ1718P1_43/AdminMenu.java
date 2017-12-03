@@ -14,6 +14,8 @@ import com.deusto.SPQ1718.DSPQ1718P1_10.ConsultaManual;
 import com.deusto.SPQ1718.DSPQ1718P1_10.EdicionManual;
 import com.deusto.SPQ1718.DSPQ1718P1_19.InterfazUsuario;
 import com.deusto.SPQ1718.DSPQ1718P1_33.EnviarRecomendacion;
+import com.deusto.SPQ1718.DSPQ1718P1_7.InterfazCompra;
+import com.deusto.SPQ1718.DSPQ1718P1_7.Interfaz_34;
 import com.deusto.SPQ1718.DSPQ1718P1_9.IEstadisticas;
 import com.deusto.SPQ1718.P1_39.Usuario;
 import com.deusto.SPQ1718.Proyecto_Super.Inicio;
@@ -50,7 +52,7 @@ public class AdminMenu extends JFrame {
 				dispose();
 			}
 		});
-		button_6.setBounds(47, 245, 292, 50);
+		button_6.setBounds(47, 231, 292, 50);
 		contentPane.add(button_6);
 		
 		JButton button_5 = new JButton("Manuales de usuario");
@@ -62,7 +64,7 @@ public class AdminMenu extends JFrame {
 				dispose();
 			}
 		});
-		button_5.setBounds(47, 367, 186, 50);
+		button_5.setBounds(47, 385, 186, 50);
 		contentPane.add(button_5);
 				
 		JButton button_1 = new JButton("Historial de actividad resumido");
@@ -74,7 +76,7 @@ public class AdminMenu extends JFrame {
 				dispose();
 			}				
 		});
-		button_1.setBounds(461, 245, 267, 50);
+		button_1.setBounds(461, 231, 267, 50);
 		contentPane.add(button_1);
 		
 		JButton button_2 = new JButton("Editar Manuales");
@@ -85,7 +87,7 @@ public class AdminMenu extends JFrame {
 				dispose();
 			}
 		});
-		button_2.setBounds(317, 367, 153, 50);
+		button_2.setBounds(317, 385, 153, 50);
 		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("Estadísticas y tendencias");
@@ -97,7 +99,7 @@ public class AdminMenu extends JFrame {
 			}
 		});
 		button_3.setText("<html><p>Estadísticas y</p><p>tendencias</p></html>");
-		button_3.setBounds(558, 367, 170, 50);
+		button_3.setBounds(558, 385, 170, 50);
 		contentPane.add(button_3);
 		
 		JLabel lblpic = new JLabel("");
@@ -107,5 +109,27 @@ public class AdminMenu extends JFrame {
 		String url = val+"\\logo.png";
 		lblpic.setIcon(new ImageIcon(url));
 		contentPane.add(lblpic);
+		
+		JButton btnVerCompras = new JButton("Ver compras");
+		btnVerCompras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Interfaz_34 c = new Interfaz_34();
+				c.setVisible(true);
+				dispose();
+			}
+		});
+		btnVerCompras.setBounds(169, 317, 170, 38);
+		contentPane.add(btnVerCompras);
+		
+		JButton btnComprar = new JButton("Comprar");
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InterfazCompra c = new InterfazCompra();
+				c.setVisible(true);
+				dispose();
+			}
+		});
+		btnComprar.setBounds(428, 317, 170, 38);
+		contentPane.add(btnComprar);
 	}
 }

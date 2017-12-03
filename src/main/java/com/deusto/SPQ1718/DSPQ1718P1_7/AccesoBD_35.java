@@ -58,25 +58,27 @@ public class AccesoBD_35 {
 	public int comprarProducto(int p, int em, int c, String f, int cant){
 		
 		PreparedStatement stmt;
-		try {
-			int a = b.disminuirAlmacen(p, cant);/**<se disminuye el almacen en la cantidad solicitada*/
-			/**Si hay errores en el método de almacen se devuelve el error*/
-			if(a == 1){ return 1;/**< 1 es que no se encontro el producto con clave p*/}
-			else if(a== 2){ return 2;/**< 2 es que el alamacen quedaría negativo si se hace la compra*/}
-			/**Si todo es correcto se continua con el registro de la compra*/
-			stmt = conn.prepareStatement("insert into compra(fecha , cliente, empleado, producto) values (?,?,?,?)"); /**< Esta consulta registra la compra en la BD*/
-			stmt.setString(1, f);
-			stmt.setInt(2, c);
-			stmt.setInt(3, em);
-			stmt.setInt(4, p);
-			stmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			log.error("Error SQL en método comprarProducto");
-			//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
-			return 3;
+		for(int i = 0; i<cant; i++){
+			try {
+				int a = b.disminuirAlmacen(p, cant);/**<se disminuye el almacen en la cantidad solicitada*/
+				/**Si hay errores en el método de almacen se devuelve el error*/
+				if(a == 1){ return 1;/**< 1 es que no se encontro el producto con clave p*/}
+				else if(a== 2){ return 2;/**< 2 es que el alamacen quedaría negativo si se hace la compra*/}
+				/**Si todo es correcto se continua con el registro de la compra*/
+				stmt = conn.prepareStatement("insert into compra(fecha , cliente, empleado, producto) values (?,?,?,?)"); /**< Esta consulta registra la compra en la BD*/
+				stmt.setString(1, f);
+				stmt.setInt(2, c);
+				stmt.setInt(3, em);
+				stmt.setInt(4, p);
+				stmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				log.error("Error SQL en método comprarProducto");
+				//Devuelve un tres si existe un error en la alguna sentecia SQL a causa de un parámetro mal pasado
+				return 3;
+			}
 		}
 		return 0;
 	}

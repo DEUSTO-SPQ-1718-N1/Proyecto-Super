@@ -20,6 +20,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.border.LineBorder;
 import javax.swing.JScrollPane;
 
+import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class Interfaz_34 extends JFrame{
 	
 	private JTable table;
@@ -30,6 +35,9 @@ public class Interfaz_34 extends JFrame{
 		i.setVisible(true);
 	}
 	public Interfaz_34() {
+		setSize(600, 400);
+		setLocationRelativeTo(null);
+	    setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		try {
 			b = new AccesoBD_35();
@@ -48,6 +56,13 @@ public class Interfaz_34 extends JFrame{
 		panel.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdminMenu a = new AdminMenu();
+				a.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.setBounds(172, 227, 89, 23);
 		btnNewButton.setBackground(new Color(240, 240, 240));

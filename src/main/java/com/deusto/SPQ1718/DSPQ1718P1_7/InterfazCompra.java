@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 
 import org.apache.log4j.Logger;
 
+import com.deusto.SPQ1718.DSPQ1718P1_43.AdminMenu;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
@@ -35,6 +37,9 @@ public class InterfazCompra extends JFrame{
 		i.setVisible(true);
 	}
 	public InterfazCompra() {
+		setSize(600, 400);
+		setLocationRelativeTo(null);
+	    setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		try {
 			b = new AccesoBD_35();
@@ -51,8 +56,8 @@ public class InterfazCompra extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				try{
 					String fecha =textField.getText();
-					int producto = Integer.valueOf(textField_2.getText());
-					int empleado = Integer.valueOf(textField_3.getText());
+					int producto = Integer.valueOf(textField_3.getText());
+					int empleado = Integer.valueOf(textField_2.getText());
 					int cantidad = Integer.valueOf(textField_1.getText());
 					int cliente = Integer.valueOf(textField_4.getText());
 					b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
@@ -64,7 +69,7 @@ public class InterfazCompra extends JFrame{
 			}
 		});
 		btnComprar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnComprar.setBounds(40, 215, 130, 35);
+		btnComprar.setBounds(42, 201, 130, 35);
 		panel.add(btnComprar);
 		
 		JLabel lblCompraDeProducto = new JLabel("Compra de Producto");
@@ -101,7 +106,7 @@ public class InterfazCompra extends JFrame{
 					
 					int clave = Integer.valueOf(textField_5.getText());
 					int cliente = Integer.valueOf(textField_4.getText());
-					int producto = Integer.valueOf(textField_2.getText());
+					int producto = Integer.valueOf(textField_3.getText());
 					int cantidad = Integer.valueOf(textField_1.getText());
 					int importe = cantidad * Math.round(b.precioProducto(producto));
 					
@@ -113,10 +118,13 @@ public class InterfazCompra extends JFrame{
 					if(confirma == true){
 						
 						String fecha =textField.getText();
-						int empleado = Integer.valueOf(textField_3.getText());
+						int empleado = Integer.valueOf(textField_4.getText());
 					
 						b.comprarProducto(producto, empleado, cliente, fecha, cantidad);
 						
+					}
+					else{
+						log.warn("Pago con tarjeta fallido "+estado);
 					}
 					
 				}catch(Exception e1){
@@ -130,7 +138,7 @@ public class InterfazCompra extends JFrame{
 		btnComprarTar.setBounds(232, 201, 142, 35);
 		panel.add(btnComprarTar);
 		
-		JLabel lblFechaDdmmaaaa = new JLabel("Fecha dd-mm-aaaa");
+		JLabel lblFechaDdmmaaaa = new JLabel("Fecha aaaa-mm-dd");
 		lblFechaDdmmaaaa.setBounds(35, 58, 122, 14);
 		panel.add(lblFechaDdmmaaaa);
 		
@@ -139,7 +147,7 @@ public class InterfazCompra extends JFrame{
 		panel.add(lblNewLabel);
 		
 		JLabel lblCdigoEmpleado = new JLabel("Código empleado");
-		lblCdigoEmpleado.setBounds(305, 58, 83, 14);
+		lblCdigoEmpleado.setBounds(305, 58, 130, 14);
 		panel.add(lblCdigoEmpleado);
 		
 		JLabel lblCantidad = new JLabel("Cantidad");
@@ -163,5 +171,17 @@ public class InterfazCompra extends JFrame{
 		JLabel lblClave = new JLabel("Clave");
 		lblClave.setBounds(294, 247, 46, 14);
 		panel.add(lblClave);
+		
+		JButton btnVolver = new JButton("VOLVER");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdminMenu a = new AdminMenu();
+				a.setVisible(true);
+				dispose();
+			}
+		});
+		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnVolver.setBounds(54, 261, 89, 23);
+		panel.add(btnVolver);
 	}
 }
